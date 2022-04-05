@@ -33,10 +33,11 @@
                 android:text="@string/current_exams"
                 android:textSize="@dimen/default_title_font_size" />
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/exam_list"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                tools:listitem="@layout/dahsboard_recyclerview_item"
                 tools:ignore="NestedScrolling" />
         </LinearLayout>
 

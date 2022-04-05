@@ -45,10 +45,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
                         android:layout_marginStart="@dimen/default_margin"
                         android:text="@string/example_exam"
                         android:textColor="@color/black"
+                        android:id="@+id/subject"
                         android:textSize="@dimen/default_small_font_size" />
 
                 </TableRow>
@@ -68,10 +68,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
                         android:layout_marginStart="@dimen/default_margin"
                         android:text="@string/example_topic"
                         android:textColor="@color/black"
+                        android:id="@+id/topic"
                         android:textSize="@dimen/default_small_font_size" />
 
                 </TableRow>
@@ -84,18 +84,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_column="0"
                         android:text="@string/date"
-                        android:textSize="@dimen/default_font_size"
-                        android:layout_column="0"/>
+                        android:textSize="@dimen/default_font_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_margin"
                         android:text="@string/example_date"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/default_small_font_size"
-                        android:layout_marginStart="@dimen/default_margin"
-                        android:layout_column="1"/>
+                        android:id="@+id/date"
+                        android:textSize="@dimen/default_small_font_size" />
 
                 </TableRow>
 
