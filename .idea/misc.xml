@@ -18,7 +18,7 @@
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/create_exam_content.xml" value="0.3067708333333333" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/create_exam_old.xml" value="0.4" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/dahsboard_recyclerview_item.xml" value="0.10989583333333333" />
-        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/dashboard.xml" value="0.16" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_error.xml" value="0.2" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_error_old.xml" value="0.264" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_success.xml" value="0.2" />
@@ -31,7 +31,7 @@
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/header_success.xml" value="0.1" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/item.xml" value="0.32395833333333335" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/list_row.xml" value="0.2617753623188406" />
-        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/remaining_time.xml" value="0.1" />
+        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/remaining_time.xml" value="0.2" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/row.xml" value="0.15052083333333333" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/test.xml" value="0.26856884057971014" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/test_with_header_and_footer.xml" value="0.4" />
