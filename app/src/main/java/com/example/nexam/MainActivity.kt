@@ -1,29 +1,22 @@
 package com.example.nexam
 
-import android.app.Activity
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.PersistableBundle
 import android.text.TextUtils
+import android.view.View
 import android.widget.*
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
     var counter = 0
 
-   /* private val examViewModel: ExamViewModel by viewModels {
-        ExamViewModelFactory((application as ExamsApplication).repository)
-    }*/
+    /* private val examViewModel: ExamViewModel by viewModels {
+         ExamViewModelFactory((application as ExamsApplication).repository)
+     }*/
 
     /*private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -46,17 +39,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard)
 
-       /* val recyclerView = findViewById<RecyclerView>(R.id.exam_list)
-        val adapter = ExamListAdapter()
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)*/
+        /* val recyclerView = findViewById<RecyclerView>(R.id.exam_list)
+         val adapter = ExamListAdapter()
+         recyclerView.adapter = adapter
+         recyclerView.layoutManager = LinearLayoutManager(this)*/
 
         /*examViewModel.allExams.observe(this) { exams ->
             // Update the cached copy of the exams in the adapter.
             exams.let { adapter.submitList(it) }
         }*/
 
-        //loadView()
+        // loadView()
+
+        //val fab = findViewById<FloatingActionButton>(R.id.createExamButton)
+        //fab.setOnClickListener { setContentView(R.layout.create_exam) }
+
+        registerFab(R.id.createExamButton, R.layout.create_exam_with_fab)
+        // registerFab(R.id.deleteExamButton, R.layout.dashboard)
 
         /*val saveBtn = findViewById<Button>(R.id.save)
         saveBtn.setOnClickListener {
@@ -64,15 +63,25 @@ class MainActivity : AppCompatActivity() {
         }*/
     }
 
+    private fun registerFab(fab: Int, view: Int) {
+        val fab = findViewById<FloatingActionButton>(fab) ?: return
+        fab.setOnClickListener {
+            setContentView(view)
+            registerFab(R.id.createExamButton, R.layout.create_exam_with_fab)
+            //   registerFab(R.id.deleteExamButton, R.layout.dashboard)
+        }
+
+    }
+
     private fun loadView() {
         registerButton(R.id.createExamButton, R.layout.create_exam)
-        registerButton(R.id.back, R.layout.dashboard)
+        /*registerButton(R.id.back, R.layout.dashboard)
         registerButton(R.id.save, R.layout.exam_success)
         registerButton(R.id.toDashboard, R.layout.dashboard)
         registerButton(R.id.editExam, R.layout.create_exam)
         registerButton(R.id.showExam, R.layout.exam_view)
         //fillList(R.id.exam_list, R.array.test_exams)
-        fillList(R.id.content_list, R.array.test_content)
+        fillList(R.id.content_list, R.array.test_content)*/
         //addTimer()
     }
 
@@ -145,5 +154,11 @@ class MainActivity : AppCompatActivity() {
                 countTime.isEnabled = true
             }
         }.start()
+    }
+
+    fun toastDelete(view: View) {
+        val toastText = "Exam deleted"
+        var toast = Toast.makeText(this, toastText, Toast.LENGTH_SHORT)
+        toast.show()
     }
 }
