@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         //val fab = findViewById<FloatingActionButton>(R.id.createExamButton)
         //fab.setOnClickListener { setContentView(R.layout.create_exam) }
 
-        registerFab(R.id.createExamButton, R.layout.create_exam_with_fab)
+        registerFab(R.id.createExamButton, R.layout.create_exam)
         // registerFab(R.id.deleteExamButton, R.layout.dashboard)
 
         /*val saveBtn = findViewById<Button>(R.id.save)
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(fab) ?: return
         fab.setOnClickListener {
             setContentView(view)
-            registerFab(R.id.createExamButton, R.layout.create_exam_with_fab)
+            registerFab(R.id.createExamButton, R.layout.create_exam)
             //   registerFab(R.id.deleteExamButton, R.layout.dashboard)
         }
 
@@ -158,6 +158,18 @@ class MainActivity : AppCompatActivity() {
 
     fun toastDelete(view: View) {
         val toastText = "Exam deleted"
+        var toast = Toast.makeText(this, toastText, Toast.LENGTH_SHORT)
+        toast.show()
+    }
+
+    fun toastAddTopic(view: View) {
+        val toastText = "Add topic"
+        var toast = Toast.makeText(this, toastText, Toast.LENGTH_SHORT)
+        toast.show()
+    }
+
+    fun toastSave(view: View) {
+        val toastText = "Exam saved"
         var toast = Toast.makeText(this, toastText, Toast.LENGTH_SHORT)
         toast.show()
     }
