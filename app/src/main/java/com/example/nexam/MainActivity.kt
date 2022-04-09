@@ -49,12 +49,12 @@ class MainActivity : AppCompatActivity() {
             exams.let { adapter.submitList(it) }
         }*/
 
-        // loadView()
+        loadView()
 
         //val fab = findViewById<FloatingActionButton>(R.id.createExamButton)
         //fab.setOnClickListener { setContentView(R.layout.create_exam) }
 
-        registerFab(R.id.createExamButton, R.layout.create_exam)
+
         // registerFab(R.id.deleteExamButton, R.layout.dashboard)
 
         /*val saveBtn = findViewById<Button>(R.id.save)
@@ -68,20 +68,25 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             setContentView(view)
             registerFab(R.id.createExamButton, R.layout.create_exam)
-            //   registerFab(R.id.deleteExamButton, R.layout.dashboard)
+            loadView()
         }
 
     }
 
     private fun loadView() {
-        registerButton(R.id.createExamButton, R.layout.create_exam)
-        /*registerButton(R.id.back, R.layout.dashboard)
-        registerButton(R.id.save, R.layout.exam_success)
-        registerButton(R.id.toDashboard, R.layout.dashboard)
-        registerButton(R.id.editExam, R.layout.create_exam)
+        //registerButton(R.id.createExamButton, R.layout.create_exam)
+        //registerButton(R.id.back, R.layout.dashboard)
+        //registerButton(R.id.save, R.layout.exam_success)
+
         registerButton(R.id.showExam, R.layout.exam_view)
         //fillList(R.id.exam_list, R.array.test_exams)
-        fillList(R.id.content_list, R.array.test_content)*/
+        fillList(R.id.content_list, R.array.test_content)
+
+        registerFab(R.id.createExamButton, R.layout.create_exam)
+        registerFab(R.id.deleteExam, R.layout.dashboard)
+        registerFab(R.id.save, R.layout.exam_error)
+        registerFab(R.id.toDashboard, R.layout.dashboard)
+        registerFab(R.id.editExam, R.layout.create_exam)
         //addTimer()
     }
 
@@ -156,20 +161,8 @@ class MainActivity : AppCompatActivity() {
         }.start()
     }
 
-    fun toastDelete(view: View) {
-        val toastText = "Exam deleted"
-        var toast = Toast.makeText(this, toastText, Toast.LENGTH_SHORT)
-        toast.show()
-    }
-
     fun toastAddTopic(view: View) {
         val toastText = "Add topic"
-        var toast = Toast.makeText(this, toastText, Toast.LENGTH_SHORT)
-        toast.show()
-    }
-
-    fun toastSave(view: View) {
-        val toastText = "Exam saved"
         var toast = Toast.makeText(this, toastText, Toast.LENGTH_SHORT)
         toast.show()
     }

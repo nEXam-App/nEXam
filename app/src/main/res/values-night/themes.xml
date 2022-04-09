@@ -8,10 +8,11 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/lightorange</item>
         <item name="colorSecondaryVariant">@color/lightorange</item>
-        <item name="colorOnSecondary">@color/darkgrey</item>
+        <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:textColorHint">@color/lightorange</item>
+        <item name="floatingActionButtonStyle">@style/StyleFAB</item>
     </style>
 </resources>
