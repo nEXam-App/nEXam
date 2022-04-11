@@ -1,40 +1,22 @@
 <resources>
-    <string name="app_name">nEXam</string>
-    <string name="subject">Subject:</string>
-    <string name="enter_subject">enter Subject</string>
-    <string name="topic">Topic:</string>
-    <string name="enter_content_of_first_topic">enter content of first topic</string>
-    <string name="enter_first_topic">enter first topic</string>
-    <string name="date">Date:</string>
-    <string name="yyyy_mm_dd">yyyy-mm-dd</string>
-    <string name="current_exams">Current Exams:</string>
-    <string name="remaining_time">Remaining time:</string>
-    <string name="remaining_time_for_selected_exam">Remaining time for selected exam</string>
-    <string name="success">Success</string>
-    <string name="the_following_exam_has_been_created">The following exam has been created:</string>
-    <string name="error">Error</string>
-    <string name="the_following_error_occurred">The following error occurred:</string>
-    <string name="finished">Finished</string>
-    <string name="countTimeText">%1$s:%2$s:%3$s</string>
-    <string name="countTimeFinished">00:00:00</string>
-
-    <!-- Buttons-->
-    <string name="createExam">Create Exam</string>
-    <string name="startTimer">Start Timer</string>
-    <string name="back">Back</string>
-    <string name="save">Save</string>
-    <string name="dashboard">Dashboard</string>
-    <string name="show_exam">Show Exam</string>
-    <string name="edit_exam">Edit Exam</string>
-
-    <!-- Example texts-->
-    <string name="example_date">2021–12–09</string>
-    <string name="example_topic">Statistik</string>
-    <string name="example_exam">Mathematik III</string>
-    <string name="example_correction">yyyy_mm_dd</string>
-    <string name="example_error">Invalid date, please use:</string>
-
-    <!--Error messages-->
-    <string name="empty_not_saved">Word not saved because it is empty.</string>
-    <string name="delete_exam">delete exam</string>
+    <string name="app_name">Inventory</string>
+    <string name="sell">Sell</string>
+    <string name="quantity">Quantity in Stock:</string>
+    <string name="quantity_req">Quantity in Stock <font color='#FF0000'>*</font></string>
+    <string name="item_name_req">Item Name <font color='#FF0000'>*</font></string>
+    <string name="item_price_req">Item Price <font color='#FF0000'>*</font></string>
+    <string name="save_action">Save</string>
+    <string name="item_detail_fragment_title">Item Details</string>
+    <string name="add_fragment_title">Add Item</string>
+    <string name="edit_fragment_title">Edit Item</string>
+    <string name="price">Price</string>
+    <string name="quantity_in_stock">Quantity\nIn Stock</string>
+    <string name="item">Item</string>
+    <string name="delete">Delete</string>
+    <string name="delete_question">Are you sure you want to delete?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="currency_symbol">$</string>
+    <string name="edit_item">Edit Item</string>
+    <string name="add_new_item">Add new item</string>
 </resources>
