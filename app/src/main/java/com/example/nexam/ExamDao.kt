@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ExamDao {
-    @Query("SELECT * FROM exam_table ORDER BY exam ASC")
+    @Query("SELECT * FROM exam_table ORDER BY subject ASC")
     fun getAlphabetizedExams(): Flow<List<Exam>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
