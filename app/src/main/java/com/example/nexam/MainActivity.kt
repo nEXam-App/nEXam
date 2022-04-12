@@ -22,10 +22,9 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     var counter = 0
 
-    private val examViewModel: ExamViewModel by viewModels {
+   /* private val examViewModel: ExamViewModel by viewModels {
         ExamViewModelFactory((application as ExamsApplication).repository)
-    }
-    private val newExamActivityRequestCode = 1
+
 
 /*    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -49,17 +48,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.exam_list)
+       /* val recyclerView = findViewById<RecyclerView>(R.id.exam_list)
         val adapter = ExamListAdapter()
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this)*/
 
-        examViewModel.allExams.observe(this) { exams ->
+        /*examViewModel.allExams.observe(this) { exams ->
             // Update the cached copy of the exams in the adapter.
             exams.let { adapter.submitList(it) }
-        }
+        }*/
 
-        loadView()
+        //loadView()
 
         /*val saveBtn = findViewById<Button>(R.id.save)
         saveBtn.setOnClickListener {
@@ -76,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         registerButton(R.id.showExam, R.layout.exam_view)
         //fillList(R.id.exam_list, R.array.test_exams)
         fillList(R.id.content_list, R.array.test_content)
-        addTimer()
+        //addTimer()
     }
 
     private fun registerButton(button: Int, view: Int) {
@@ -103,14 +102,14 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun addTimer() {
+    /*private fun addTimer() {
         val button = findViewById<Button>(R.id.startTimer) ?: return
         button.setOnClickListener {
             setContentView(R.layout.dashboard)
             loadView()
             startTimeCounter()
         }
-    }
+    }*/
 
     private fun startTimeCounter() {
         val countTime: EditText = findViewById(R.id.countTime)
