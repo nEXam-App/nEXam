@@ -1,7 +1,42 @@
 package com.example.nexam
 
 import android.os.Bundle
+
+import android.os.CountDownTimer
+import android.text.TextUtils
+import android.widget.*
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import java.text.DecimalFormat
+import java.text.NumberFormat
+
+class MainActivity : AppCompatActivity() {
+    var counter = 0
+
+    private val examViewModel: ExamViewModel by viewModels {
+        ExamViewModelFactory((application as ExamApplication).repository)
+    }
+    private val newExamActivityRequestCode = 1
+
+/*    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == newExamActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            data?.getStringExtra(NewExamActivity.EXTRA_REPLY)?.let {
+                val word = Exam(it, Date("2022-06-01"), false)
+                examViewModel.insert(word)
+            }
+        } else {
+            Toast.makeText(
+                applicationContext,
+                R.string.empty_not_saved,
+                Toast.LENGTH_LONG).show()
+        }
+    }
+*/
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

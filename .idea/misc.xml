@@ -76,6 +76,14 @@
         <entry key="..\:/Users/User/OneDrive/Desktop/Studium/03_Semester/SoftwareEngineering/nEXam/nEXam/app/src/main/res/layout/exam_error.xml" value="0.19401709401709402" />
         <entry key="..\:/Users/User/OneDrive/Desktop/Studium/03_Semester/SoftwareEngineering/nEXam/nEXam/app/src/main/res/layout/exam_success.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/OneDrive/Desktop/Studium/03_Semester/SoftwareEngineering/nEXam/nEXam/app/src/main/res/layout/exam_view.xml" value="0.4" />
+
+        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/activity_new_exam.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/dahsboard_recyclerview_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/dashboard.xml" value="0.240625" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/dashboard_list_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/dashboard_new.xml" value="0.25416666666666665" />
+
       </map>
     </option>
   </component>
