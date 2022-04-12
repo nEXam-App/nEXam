@@ -29,7 +29,7 @@ class ExamListAdapter : ListAdapter<Exam, ExamListAdapter.ExamViewHolder>(ExamsC
         companion object {
             fun create(parent: ViewGroup): ExamViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.dahsboard_recyclerview_item, parent, false)
+                    .inflate(R.layout.dashboard_recyclerview_item, parent, false)
                 return ExamViewHolder(view)
             }
         }
