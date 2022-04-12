@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/buttons_dashboard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_above="@+id/footer"
     android:layout_marginHorizontal="@dimen/default_margin"
     android:layout_marginLeft="@dimen/margin_buttons"
-    android:layout_marginRight="@dimen/margin_buttons"
-    android:gravity="center"
-    android:orientation="horizontal">
-
-    <Button
-        android:id="@+id/createExamButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_weight="0.5"
-        android:text="@string/createExam" />
+    android:layout_marginRight="@dimen/margin_buttons">
 
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="0.5" />
+        android:layout_weight="1"/>
 
-    <Button
-        android:id="@+id/startTimer"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/createExamButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_weight="0.5"
-        android:text="@string/startTimer" />
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/createExam"
+        app:rippleColor="@color/white"
+        android:src="@drawable/ic_baseline_add_24" />
 </LinearLayout>
