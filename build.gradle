@@ -24,8 +24,9 @@ ext {
     coroutines_version = '1.4.2'
     lifecycleVersion = '2.4.0'
     materialVersion = '1.4.0'
-    roomVersion = '2.3.0'
-    nav_version = '2.3.5'
+
+    roomVersion = '2.4.2'
+
     // testing
     junitVersion = '4.13.2'
     espressoVersion = '3.4.0'
