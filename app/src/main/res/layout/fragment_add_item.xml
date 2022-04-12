@@ -57,6 +57,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_price_label">
 
+            <!--TODO add content as list -> s. dashboard, add + FAB for contents-->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/item_count"
                 android:layout_width="match_parent"

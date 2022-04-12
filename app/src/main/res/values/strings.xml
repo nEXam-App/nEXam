@@ -43,5 +43,6 @@
     <string name="exam_date">Exam Date</string>
     <string name="exam_topic">Exam Topic</string>
     <string name="save_action">SAVE</string>
+    <string name="delete">DELETE</string>
 
 </resources>
