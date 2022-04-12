@@ -70,7 +70,6 @@ class MainActivity : AppCompatActivity() {
     private fun loadView() {
         registerButton(R.id.createExamButton, R.layout.create_exam)
         registerButton(R.id.back, R.layout.dashboard)
-        registerButton(R.id.save, R.layout.exam_success)
         registerButton(R.id.toDashboard, R.layout.dashboard)
         registerButton(R.id.editExam, R.layout.create_exam)
         registerButton(R.id.showExam, R.layout.exam_view)
