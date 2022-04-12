@@ -7,6 +7,6 @@ import kotlinx.coroutines.SupervisorJob
 class ExamsApplication : Application() {
     val applicationScope = CoroutineScope(SupervisorJob())
 
-    val database by lazy { AppDatabase.getDatabase(this, applicationScope) }
+    val database by lazy { AppDatabase.getDatabase(this) }
     val repository by lazy { ExamRepository(database.examDao()) }
 }

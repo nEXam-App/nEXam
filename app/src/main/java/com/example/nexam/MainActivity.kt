@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     var counter = 0
@@ -24,23 +25,25 @@ class MainActivity : AppCompatActivity() {
     private val examViewModel: ExamViewModel by viewModels {
         ExamViewModelFactory((application as ExamsApplication).repository)
     }
+    private val newExamActivityRequestCode = 1
 
-    /*private val startForResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                NewExamActivity.EXTRA_REPLY?.let { reply ->
-                    val exam = Exam(reply)
-                    examViewModel.insert()
-                }
-            } else {
-                Toast.makeText(
-                    applicationContext,
-                    R.string.empty_not_saved,
-                    Toast.LENGTH_LONG
-                ).show()
+/*    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == newExamActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            data?.getStringExtra(NewExamActivity.EXTRA_REPLY)?.let {
+                val word = Exam(it, Date("2022-06-01"), false)
+                examViewModel.insert(word)
             }
-        }*/
-
+        } else {
+            Toast.makeText(
+                applicationContext,
+                R.string.empty_not_saved,
+                Toast.LENGTH_LONG).show()
+        }
+    }
+*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
