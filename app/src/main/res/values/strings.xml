@@ -34,4 +34,7 @@
     <string name="example_exam">Mathematik III</string>
     <string name="example_correction">yyyy_mm_dd</string>
     <string name="example_error">Invalid date, please use:</string>
+
+    <!--Error messages-->
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
 </resources>
