@@ -61,6 +61,8 @@ def roomVersion = '2.4.2'
 
 dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation("androidx.room:room-ktx:$roomVersion")

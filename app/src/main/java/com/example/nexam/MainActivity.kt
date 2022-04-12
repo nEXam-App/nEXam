@@ -1,29 +1,21 @@
 package com.example.nexam
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.PersistableBundle
 import android.text.TextUtils
 import android.widget.*
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.text.DecimalFormat
 import java.text.NumberFormat
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
     var counter = 0
 
     private val examViewModel: ExamViewModel by viewModels {
-        ExamViewModelFactory((application as ExamsApplication).repository)
+        ExamViewModelFactory((application as ExamApplication).repository)
     }
     private val newExamActivityRequestCode = 1
 
