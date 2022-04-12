@@ -1,71 +1,20 @@
 package com.example.nexam
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.os.PersistableBundle
-import android.text.TextUtils
-import android.widget.*
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import java.text.DecimalFormat
-import java.text.NumberFormat
-import java.util.*
 
-class MainActivity : AppCompatActivity() {
-    var counter = 0
-
-    private val examViewModel: ExamViewModel by viewModels {
-        ExamViewModelFactory((application as ExamsApplication).repository)
-    }
-    private val newExamActivityRequestCode = 1
-
-/*    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == newExamActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            data?.getStringExtra(NewExamActivity.EXTRA_REPLY)?.let {
-                val word = Exam(it, Date("2022-06-01"), false)
-                examViewModel.insert(word)
-            }
-        } else {
-            Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG).show()
-        }
-    }
-*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dashboard)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.exam_list)
-        val adapter = ExamListAdapter()
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        examViewModel.allExams.observe(this) { exams ->
-            // Update the cached copy of the exams in the adapter.
-            exams.let { adapter.submitList(it) }
-        }
-
-        loadView()
-
-        /*val saveBtn = findViewById<Button>(R.id.save)
-        saveBtn.setOnClickListener {
-            startForResult.launch(Intent(this, NewExamActivity::class.java))
-        }*/
+        // Retrieve NavController from the NavHostFragment
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+        // Set up the action bar for use with the NavController
+        setupActionBarWithNavController(this, navController)
     }
+
 
     private fun loadView() {
         registerButton(R.id.createExamButton, R.layout.create_exam)
@@ -147,5 +96,6 @@ class MainActivity : AppCompatActivity() {
                 countTime.isEnabled = true
             }
         }.start()
+
     }
 }
