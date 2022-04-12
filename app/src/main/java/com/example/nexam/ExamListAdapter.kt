@@ -16,7 +16,7 @@ class ExamListAdapter : ListAdapter<Exam, ExamListAdapter.ExamViewHolder>(ExamsC
 
     override fun onBindViewHolder(holder: ExamViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.exam)
+        holder.bind(current.toString())
     }
 
     class ExamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -41,7 +41,7 @@ class ExamListAdapter : ListAdapter<Exam, ExamListAdapter.ExamViewHolder>(ExamsC
         }
 
         override fun areContentsTheSame(oldItem: Exam, newItem: Exam): Boolean {
-            return oldItem.exam == newItem.exam
+            return oldItem.toString() == newItem.toString()
         }
     }
 }
