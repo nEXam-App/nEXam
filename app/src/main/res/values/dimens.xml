@@ -13,4 +13,7 @@
     <dimen name="header_font_size">28sp</dimen>
     <dimen name="header_margin">30dp</dimen>
     <dimen name="header_margin_top">60dp</dimen>
+
+    <!--from inventory-->
+    <dimen name="margin">16dp</dimen>
 </resources>

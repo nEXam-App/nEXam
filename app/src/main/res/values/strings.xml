@@ -2,7 +2,6 @@
     <string name="app_name">nEXam</string>
     <string name="subject">Subject:</string>
     <string name="enter_subject">enter Subject</string>
-    <string name="topic">Topic:</string>
     <string name="content">Content:</string>
     <string name="enter_content_of_first_topic">enter content of first topic</string>
     <string name="enter_first_topic">enter first topic</string>
@@ -13,6 +12,7 @@
     <string name="remaining_time_for_selected_exam">Remaining time for selected exam</string>
     <string name="success">Success</string>
     <string name="the_following_exam_has_been_created">The following exam has been created:</string>
+    <string name="topic">Topic:</string>
     <string name="error">Error</string>
     <string name="the_following_error_occurred">The following error occurred:</string>
     <string name="finished">Finished</string>
@@ -37,4 +37,11 @@
 
     <!--Error messages-->
     <string name="empty_not_saved">Word not saved because it is empty.</string>
+
+    <!--from invetory-->
+    <string name="exam_name_req">Exam Subject <font color='#FF0000'>*</font></string>
+    <string name="exam_date">Exam Date</string>
+    <string name="exam_topic">Exam Topic</string>
+    <string name="save_action">SAVE</string>
+
 </resources>
