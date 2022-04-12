@@ -1,65 +1,93 @@
 package com.example.nexam
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-
 import android.os.CountDownTimer
 import android.text.TextUtils
+import android.view.View
 import android.widget.*
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
-class MainActivity : AppCompatActivity() {
+class MainActivitynEXam : AppCompatActivity() {
     var counter = 0
 
-    private val examViewModel: ExamViewModel by viewModels {
-        ExamViewModelFactory((application as ExamApplication).repository)
-    }
-    private val newExamActivityRequestCode = 1
+    /* private val examViewModel: ExamViewModel by viewModels {
+         ExamViewModelFactory((application as ExamsApplication).repository)
+     }*/
 
-/*    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == newExamActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            data?.getStringExtra(NewExamActivity.EXTRA_REPLY)?.let {
-                val word = Exam(it, Date("2022-06-01"), false)
-                examViewModel.insert(word)
+    /*private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                NewExamActivity.EXTRA_REPLY?.let { reply ->
+                    val exam = Exam(reply)
+                    examViewModel.insert()
+                }
+            } else {
+                Toast.makeText(
+                    applicationContext,
+                    R.string.empty_not_saved,
+                    Toast.LENGTH_LONG
+                ).show()
             }
-        } else {
-            Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG).show()
-        }
-    }
-*/
+        }*/
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.dashboard)
 
-        // Retrieve NavController from the NavHostFragment
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
-        // Set up the action bar for use with the NavController
-        setupActionBarWithNavController(this, navController)
+        /* val recyclerView = findViewById<RecyclerView>(R.id.exam_list)
+         val adapter = ExamListAdapter()
+         recyclerView.adapter = adapter
+         recyclerView.layoutManager = LinearLayoutManager(this)*/
+
+        /*examViewModel.allExams.observe(this) { exams ->
+            // Update the cached copy of the exams in the adapter.
+            exams.let { adapter.submitList(it) }
+        }*/
+
+        loadView()
+
+        //val fab = findViewById<FloatingActionButton>(R.id.createExamButton)
+        //fab.setOnClickListener { setContentView(R.layout.create_exam) }
+
+
+        // registerFab(R.id.deleteExamButton, R.layout.dashboard)
+
+        /*val saveBtn = findViewById<Button>(R.id.save)
+        saveBtn.setOnClickListener {
+            startForResult.launch(Intent(this, NewExamActivity::class.java))
+        }*/
     }
 
+    private fun registerFab(fab: Int, view: Int) {
+        val fab = findViewById<FloatingActionButton>(fab) ?: return
+        fab.setOnClickListener {
+            setContentView(view)
+            registerFab(R.id.createExamButton, R.layout.create_exam)
+            loadView()
+        }
+
+    }
 
     private fun loadView() {
-        registerButton(R.id.createExamButton, R.layout.create_exam)
-        registerButton(R.id.back, R.layout.dashboard)
-        registerButton(R.id.toDashboard, R.layout.dashboard)
-        registerButton(R.id.editExam, R.layout.create_exam)
+        //registerButton(R.id.createExamButton, R.layout.create_exam)
+        //registerButton(R.id.back, R.layout.dashboard)
+        //registerButton(R.id.save, R.layout.exam_success)
+
         registerButton(R.id.showExam, R.layout.exam_view)
         //fillList(R.id.exam_list, R.array.test_exams)
         fillList(R.id.content_list, R.array.test_content)
-        addTimer()
+
+        registerFab(R.id.createExamButton, R.layout.create_exam)
+        registerFab(R.id.deleteExam, R.layout.dashboard)
+        registerFab(R.id.save, R.layout.exam_error)
+        registerFab(R.id.toDashboard, R.layout.dashboard)
+        registerFab(R.id.editExam, R.layout.create_exam)
+        //addTimer()
     }
 
     private fun registerButton(button: Int, view: Int) {
@@ -86,14 +114,14 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun addTimer() {
+    /*private fun addTimer() {
         val button = findViewById<Button>(R.id.startTimer) ?: return
         button.setOnClickListener {
             setContentView(R.layout.dashboard)
             loadView()
             startTimeCounter()
         }
-    }
+    }*/
 
     private fun startTimeCounter() {
         val countTime: EditText = findViewById(R.id.countTime)
@@ -131,6 +159,11 @@ class MainActivity : AppCompatActivity() {
                 countTime.isEnabled = true
             }
         }.start()
+    }
 
+    fun toastAddTopic(view: View) {
+        val toastText = "Add topic"
+        var toast = Toast.makeText(this, toastText, Toast.LENGTH_SHORT)
+        toast.show()
     }
 }
