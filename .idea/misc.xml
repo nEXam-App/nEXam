@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.105" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.17" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.105" />
+        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.305" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.105" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/drawable/ic_edit.xml" value="0.126" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/drawable/ic_launcher_background.xml" value="0.105" />
@@ -22,33 +23,26 @@
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/buttons_exam_error.xml" value="0.264" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/buttons_exam_error2.xml" value="0.4" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/buttons_exam_success.xml" value="0.4" />
-
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/buttons_exam_view.xml" value="0.1" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/card_view_design.xml" value="0.3917572463768116" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/create_exam.xml" value="0.4" />
-
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/create_exam.xml.xml" value="0.31398416886543534" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/create_exam_content.xml" value="0.3067708333333333" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/create_exam_old.xml" value="0.4" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/create_exam_with_fab.xml" value="0.4109375" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/dahsboard_recyclerview_item.xml" value="0.10989583333333333" />
-
-        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/dashboard.xml" value="0.4" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/dashboard_recyclerview_item.xml" value="0.4505208333333333" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/dashboard_with_fab.xml" value="0.45" />
-        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_error.xml" value="0.1" />
-
+        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_error.xml" value="0.4" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_error_old.xml" value="0.264" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_success.xml" value="0.2" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_success_old.xml" value="0.264" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_view.xml" value="0.264" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/exam_view_old.xml" value="0.264" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/footer.xml" value="0.2780373831775701" />
-
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/fragment_add_item.xml" value="0.264" />
-
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/fragment_item_detail.xml" value="0.264" />
-
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/header.xml" value="0.4" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/header_error.xml" value="0.1" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/header_success.xml" value="0.1" />
@@ -56,13 +50,13 @@
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/item_list_fragment.xml" value="0.1" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/item_list_item.xml" value="0.1" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/list_row.xml" value="0.2617753623188406" />
-        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/remaining_time.xml" value="0.1" />
+        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/remaining_time.xml" value="0.4" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/row.xml" value="0.15052083333333333" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/test.xml" value="0.26856884057971014" />
         <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/test_with_header_and_footer.xml" value="0.4" />
-        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/topic_view.xml" value="0.1" />
-        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.5656410256410257" />
-        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.5656410256410257" />
+        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/layout/topic_view.xml" value="0.4" />
+        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.264" />
+        <entry key="..\:/Users/Service/AndroidStudioProjects/nEXam/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.136" />
         <entry key="..\:/Users/Service/Desktop/nEXam/nEXam/app/src/main/res/layout/activity_main.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/User/AndroidStudioProjects/nEXam/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User/OneDrive/Desktop/Studium/03_Semester/SoftwareEngineering/nEXam/app/src/main/res/layout/create_exam.xml" value="0.25416666666666665" />
@@ -76,14 +70,6 @@
         <entry key="..\:/Users/User/OneDrive/Desktop/Studium/03_Semester/SoftwareEngineering/nEXam/nEXam/app/src/main/res/layout/exam_error.xml" value="0.19401709401709402" />
         <entry key="..\:/Users/User/OneDrive/Desktop/Studium/03_Semester/SoftwareEngineering/nEXam/nEXam/app/src/main/res/layout/exam_success.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/OneDrive/Desktop/Studium/03_Semester/SoftwareEngineering/nEXam/nEXam/app/src/main/res/layout/exam_view.xml" value="0.4" />
-
-        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/activity_new_exam.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/dahsboard_recyclerview_item.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/dashboard.xml" value="0.240625" />
-        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/dashboard_list_fragment.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/User/OneDrive/Desktop/Studium/04_Semester/Softwareengineering/nEXam/app/src/main/res/layout/dashboard_new.xml" value="0.25416666666666665" />
-
       </map>
     </option>
   </component>
