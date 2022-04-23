@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.inventory">
+    package="com.example.nexam">
 
     <application
-        android:name="com.example.inventory.nEXamApplication"
+        android:name="com.example.nexam.nEXamApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,7 +12,7 @@
         android:theme="@style/Theme.InventoryApp">
         <activity
             android:exported="true"
-            android:name="com.example.inventory.MainActivity">
+            android:name="com.example.nexam.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

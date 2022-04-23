@@ -1,27 +1,27 @@
-package com.example.inventory
+package com.example.nexam
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.inventory.data.Exam
-import com.example.inventory.data.ExamDao
+import com.example.nexam.data.Exam
+import com.example.nexam.data.ExamDao
 import kotlinx.coroutines.launch
 import java.util.*
 
 /**
- * View Model to keep a reference to the Inventory repository and an up-to-date list of all items.
+ * View Model to keep a reference to the nEXam repository and an up-to-date list of all exams.
  *
  */
 class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
 
-    // Cache all items form the database using LiveData.
+    // Cache all exams form the database using LiveData.
     val allExams: LiveData<List<Exam>> = examDao.getExam().asLiveData()
 
 
     /**
-     * Updates an existing Item in the database.
+     * Updates an existing exam in the database.
      */
     fun updateExam(
         examId: Int,
@@ -42,20 +42,18 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
         }
     }
 
-
-
     /**
-     * Inserts the new Item into database.
+     * Inserts the new exam into database.
      */
     fun addNewExam(nameOfSubject: String, dateOfExam: Date) {
         val newExam = getNewExamEntry(nameOfSubject, dateOfExam)
-        insertItem(newExam)
+        insertExam(newExam)
     }
 
     /**
      * Launching a new coroutine to insert an exam in a non-blocking way
      */
-    private fun insertItem(exam: Exam) {
+    private fun insertExam(exam: Exam) {
         viewModelScope.launch {
             examDao.insert(exam)
         }
@@ -89,7 +87,7 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
 
     /**
      * Returns an instance of the [Exam] entity class with the exam info entered by the user.
-     * This will be used to add a new entry to the Inventory database.
+     * This will be used to add a new entry to the nEXam database.
      */
     private fun getNewExamEntry(examName: String, dateOfExam: Date): Exam {
         return Exam(
@@ -99,7 +97,7 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
     }
 
     /**
-     * Called to update an existing entry in the Inventory database.
+     * Called to update an existing entry in the nEXam database.
      * Returns an instance of the [Exam] entity class with the exam info updated by the user.
      */
     private fun getUpdatedExamEntry(
@@ -127,4 +125,3 @@ class nEXamViewModelFactory(private val examDao: ExamDao) : ViewModelProvider.Fa
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
-

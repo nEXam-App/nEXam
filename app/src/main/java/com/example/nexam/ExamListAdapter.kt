@@ -1,13 +1,12 @@
-
-package com.example.inventory
+package com.example.nexam
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.inventory.data.Exam
-import com.example.inventory.databinding.ExamListExamBinding
+import com.example.nexam.data.Exam
+import com.example.nexam.databinding.ExamListExamBinding
 import java.util.*
 
 /**
@@ -39,9 +38,8 @@ class ExamListAdapter(private val onExamClicked: (Exam) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(exam: Exam) {
-            val dateBinded = Date(binding.date.text.toString())
             binding.examName.text = exam.nameOfSubject
-            binding.date.text = dateBinded
+            binding.date.text = exam.dateOfExam.toString()
         }
     }
 
