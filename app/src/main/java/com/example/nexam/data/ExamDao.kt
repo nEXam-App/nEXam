@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ExamDao {
 
-    @Query("SELECT * from exam ORDER BY name ASC")
+    @Query("SELECT * from exam ORDER BY subject ASC")
     fun getExam(): Flow<List<Exam>>
 
     @Query("SELECT * from exam WHERE id = :id")

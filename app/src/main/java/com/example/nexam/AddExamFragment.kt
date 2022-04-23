@@ -77,7 +77,7 @@ class AddExamFragment : Fragment() {
                 binding.examName.text.toString(),
                 date,
             )
-            val action = AddExamFragmentDirections.actionAddExamFragmentToExamListFragment()
+            val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
         }
     }
@@ -93,7 +93,7 @@ class AddExamFragment : Fragment() {
                 this.binding.examName.text.toString(),
                 date
             )
-            val action = AddExamFragmentDirections.actionAddExamFragmentToExamListFragment()
+            val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
         }
     }

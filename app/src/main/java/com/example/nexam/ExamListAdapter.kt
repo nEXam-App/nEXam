@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nexam.data.Exam
 import com.example.nexam.databinding.ExamListExamBinding
-import java.util.*
 
 /**
  * [ListAdapter] implementation for the recyclerview.
@@ -27,8 +26,8 @@ class ExamListAdapter(private val onExamClicked: (Exam) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ExamViewHolder, position: Int) {
-        val current = getExam(position)
-        holder.examView.setOnClickListener {
+        val current = getItem(position)
+        holder.itemView.setOnClickListener {
             onExamClicked(current)
         }
         holder.bind(current)
@@ -44,8 +43,8 @@ class ExamListAdapter(private val onExamClicked: (Exam) -> Unit) :
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ExamCallback<Exam>() {
-            override fun areExamsTheSame(oldExam: Exam, newExam: Exam): Boolean {
+        private val DiffCallback = object : DiffUtil.ItemCallback<Exam>() {
+            override fun areItemsTheSame(oldExam: Exam, newExam: Exam): Boolean {
                 return oldExam === newExam
             }
 

@@ -13,7 +13,7 @@ import com.example.nexam.databinding.DashboardFragmentBinding
 /**
  * Main fragment displaying details for all exams in the database.
  */
-class ExamListFragment : Fragment() {
+class DashboardFragment : Fragment() {
     private val viewModel: nEXamViewModel by activityViewModels {
         nEXamViewModelFactory(
             (activity?.application as nEXamApplication).database.ExamDao()
@@ -37,7 +37,7 @@ class ExamListFragment : Fragment() {
 
         val adapter = ExamListAdapter {
             val action =
-                ExamListFragmentDirections.actionExamListFragmentToExamDetailFragment(it.id)
+                DashboardFragmentDirections.actionDashboardFragmentToExamDetailFragment(it.id)
             this.findNavController().navigate(action)
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -51,7 +51,7 @@ class ExamListFragment : Fragment() {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            val action = ExamListFragmentDirections.actionExamListFragmentToAddExamFragment(
+            val action = DashboardFragmentDirections.actionDashboardFragmentToAddExamFragment(
                 getString(R.string.add_fragment_title)
             )
             this.findNavController().navigate(action)

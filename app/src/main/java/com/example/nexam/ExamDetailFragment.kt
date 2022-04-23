@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.nexam.data.Exam
+import com.example.nexam.databinding.FragmentExamDetailBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
@@ -42,7 +43,7 @@ class ExamDetailFragment : Fragment() {
     private fun bind(exam: Exam) {
         binding.apply {
             examName.text = exam.nameOfSubject
-            date.text = exam.dateOfExam
+            date.text = exam.dateOfExam.toString()
 
             deleteExam.setOnClickListener { showConfirmationDialog() }
             editExam.setOnClickListener { editExam() }

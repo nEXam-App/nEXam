@@ -15,5 +15,5 @@ data class Exam(
     @ColumnInfo(name = "subject")
     val nameOfSubject: String,
     @ColumnInfo(name = "date")
-    val dateOfExam: Date,
+    val dateOfExam: String,
 )

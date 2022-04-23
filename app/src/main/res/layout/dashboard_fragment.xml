@@ -7,11 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin"
-    tools:context=".ExamListFragment">
+    tools:context=".DashboardFragment">
 
     <TextView
         android:id="@+id/exam_name"
-        style="@style/Widget.Nexam.Header"
+        style="@style/Widget.nEXam.Header"
         android:layout_marginStart="@dimen/margin_between_elements"
         android:text="@string/exam"
         app:layout_constraintEnd_toStartOf="@+id/date"
