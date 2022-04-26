@@ -1,14 +1,12 @@
-
-package com.example.inventory
+package com.example.nexam
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.inventory.data.Exam
-import com.example.inventory.databinding.ExamListExamBinding
-import java.util.*
+import com.example.nexam.data.Exam
+import com.example.nexam.databinding.ExamListExamBinding
 
 /**
  * [ListAdapter] implementation for the recyclerview.
@@ -28,8 +26,8 @@ class ExamListAdapter(private val onExamClicked: (Exam) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ExamViewHolder, position: Int) {
-        val current = getExam(position)
-        holder.examView.setOnClickListener {
+        val current = getItem(position)
+        holder.itemView.setOnClickListener {
             onExamClicked(current)
         }
         holder.bind(current)
@@ -39,15 +37,14 @@ class ExamListAdapter(private val onExamClicked: (Exam) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(exam: Exam) {
-            val dateBinded = Date(binding.date.text.toString())
             binding.examName.text = exam.nameOfSubject
-            binding.date.text = dateBinded
+            binding.date.text = exam.dateOfExam.toString()
         }
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ExamCallback<Exam>() {
-            override fun areExamsTheSame(oldExam: Exam, newExam: Exam): Boolean {
+        private val DiffCallback = object : DiffUtil.ItemCallback<Exam>() {
+            override fun areItemsTheSame(oldExam: Exam, newExam: Exam): Boolean {
                 return oldExam === newExam
             }
 

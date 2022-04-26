@@ -1,5 +1,4 @@
-
-package com.example.inventory
+package com.example.nexam
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.inventory.data.Exam
-import com.example.inventory.data.getFormattedPrice
+import com.example.nexam.data.Exam
+import com.example.nexam.databinding.FragmentExamDetailBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
@@ -44,7 +43,7 @@ class ExamDetailFragment : Fragment() {
     private fun bind(exam: Exam) {
         binding.apply {
             examName.text = exam.nameOfSubject
-            date.text = exam.getFormattedPrice()
+            date.text = exam.dateOfExam.toString()
 
             deleteExam.setOnClickListener { showConfirmationDialog() }
             editExam.setOnClickListener { editExam() }
@@ -88,7 +87,7 @@ class ExamDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.examId
-        // Retrieve the exam details using the itemId.
+        // Retrieve the exam details using the examId.
         // Attach an observer on the data (instead of polling for changes) and only update the
         // the UI when the data actually changes.
         viewModel.retrieveExam(id).observe(this.viewLifecycleOwner) { selectedExam ->
