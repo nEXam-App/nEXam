@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,9 +13,20 @@
         style="@style/Widget.nEXam.Header"
         android:layout_marginStart="@dimen/margin_between_elements"
         android:text="@string/exam"
-        app:layout_constraintEnd_toStartOf="@+id/date"
-        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintEnd_toStartOf="@+id/exam_date"
+        app:layout_constraintHorizontal_weight="4"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/exam_date"
+        style="@style/Widget.nEXam.Header"
+        android:layout_below="@+id/exam_name"
+        android:layout_marginStart="@dimen/margin_header"
+        android:text="@string/date"
+        android:textAlignment="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/exam_name"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
