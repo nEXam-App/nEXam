@@ -26,7 +26,7 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
     fun updateExam(
         examId: Int,
         nameOfSubject: String,
-        dateOfExam: Date
+        dateOfExam: String
     ) {
         val updatedExam = getUpdatedExamEntry(examId, nameOfSubject, dateOfExam)
         updateExam(updatedExam)
@@ -45,7 +45,7 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
     /**
      * Inserts the new exam into database.
      */
-    fun addNewExam(nameOfSubject: String, dateOfExam: Date) {
+    fun addNewExam(nameOfSubject: String, dateOfExam: String) {
         val newExam = getNewExamEntry(nameOfSubject, dateOfExam)
         insertExam(newExam)
     }
@@ -89,7 +89,7 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
      * Returns an instance of the [Exam] entity class with the exam info entered by the user.
      * This will be used to add a new entry to the nEXam database.
      */
-    private fun getNewExamEntry(examName: String, dateOfExam: Date): Exam {
+    private fun getNewExamEntry(examName: String, dateOfExam: String): Exam {
         return Exam(
             nameOfSubject = examName,
             dateOfExam = dateOfExam
@@ -103,7 +103,7 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
     private fun getUpdatedExamEntry(
         examId: Int,
         examName: String,
-        dateOfExam: Date
+        dateOfExam: String
     ): Exam {
         return Exam(
             id = examId,

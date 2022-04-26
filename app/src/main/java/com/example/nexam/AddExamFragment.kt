@@ -71,7 +71,7 @@ class AddExamFragment : Fragment() {
      * Inserts the new exam into database and navigates up to list fragment.
      */
     private fun addNewExam() {
-        val date = Date(binding.date.text.toString())
+        val date = binding.date.text.toString()
         if (isEntryValid()) {
             viewModel.addNewExam(
                 binding.examName.text.toString(),
@@ -87,7 +87,7 @@ class AddExamFragment : Fragment() {
      */
     private fun updateExam() {
         if (isEntryValid()) {
-            val date = Date(binding.date.text.toString())
+            val date = binding.date.text.toString()
             viewModel.updateExam(
                 this.navigationArgs.examId,
                 this.binding.examName.text.toString(),
