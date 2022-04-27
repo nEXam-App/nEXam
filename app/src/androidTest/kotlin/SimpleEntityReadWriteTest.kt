@@ -1,4 +1,5 @@
 import android.content.Context
+import androidx.room.Insert
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -39,7 +40,6 @@ class SimpleEntityReadWriteTest {
         examDao.insert(user)
         val byName = examDao.findUsersByName("george")
         assertThat(byName.get(0), equalTo(user))*/
-
         val exam: Exam = Exam( 1, "Mathe", "2022-06-14")
         examDao.insert(exam)
         val byId = examDao.getExam(1)
