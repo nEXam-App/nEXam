@@ -2,7 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - main # or the name of your main branch
+      - main # or the name of your main branch TODO remove if it works
 
 jobs:
   build:
