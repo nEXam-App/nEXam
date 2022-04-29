@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.nexam.data.Exam
 import com.example.nexam.databinding.FragmentAddExamBinding
 import java.util.*
+//TESt
 
 /**
  * Fragment to add or update an exam in the nEXam database.
