@@ -6,6 +6,12 @@ plugins {
     id "org.sonarqube" version "3.3"
 }
 
+sonarqube {
+    properties {
+        property "sonar.projectKey", "nEXamApp"
+    }
+}
+
 android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
