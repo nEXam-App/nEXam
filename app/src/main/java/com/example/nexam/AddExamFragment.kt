@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -144,7 +145,7 @@ class AddExamFragment : Fragment() {
      * Update Date in View
      */
     private fun updateDateInView() {
-        val myFormat = "dd/mm/yyyy" // mention the format you need
+        val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.GERMANY)
         textview_date?.setText(sdf.format(cal.getTime()), TextView.BufferType.SPANNABLE)
     }
