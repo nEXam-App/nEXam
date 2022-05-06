@@ -8,10 +8,11 @@ import androidx.room.RoomDatabase
 /**
  * Database class with a singleton INSTANCE object.
  */
-@Database(entities = [Exam::class], version = 1, exportSchema = false)
+@Database(entities = [Exam::class, Topic::class], version = 1, exportSchema = false)
 abstract class ExamRoomDatabase : RoomDatabase() {
 
     abstract fun ExamDao(): ExamDao
+    abstract fun TopicDao(): TopicDao
 
     companion object {
         @Volatile
