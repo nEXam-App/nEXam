@@ -6,7 +6,6 @@ import com.example.nexam.MainActivity
 import com.example.nexam.steps.ContactListSteps
 import com.example.nexam.steps.DetailsSteps
 import com.example.nexam.steps.ScreenshotSteps
-import com.example.nexam.steps.ShowDashboardSteps
 import com.mauriciotogneri.greencoffee.GreenCoffeeConfig
 import com.mauriciotogneri.greencoffee.GreenCoffeeTest
 import com.mauriciotogneri.greencoffee.ScenarioConfig
@@ -16,7 +15,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class ShowDashbaordFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scenarioConfig) {
+class ContactListFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scenarioConfig) {
 
     @Rule @JvmField
     val activity = ActivityTestRule(MainActivity::class.java, true, true)
@@ -24,7 +23,7 @@ class ShowDashbaordFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTes
     @Test
     fun test() {
         start(
-            ShowDashboardSteps(),
+            ContactListSteps(),
             DetailsSteps(),
             ScreenshotSteps())
     }
@@ -35,7 +34,7 @@ class ShowDashbaordFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTes
         @JvmStatic
         fun scenarios(): Iterable<ScenarioConfig> {
             return GreenCoffeeConfig()
-                .withFeatureFromAssets("assets/showDashboard.feature")
+                .withFeatureFromAssets("assets/contacts.feature")
                 .takeScreenshotOnFail()
                 .scenarios(TestSuite.ENGLISH, TestSuite.SPANISH)
         }

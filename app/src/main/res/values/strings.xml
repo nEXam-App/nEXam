@@ -16,6 +16,11 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="currency_symbol">$</string>
+
     <string name="edit_exam">Edit Exam</string>
+    <string name="pick_date">Pick Date</string>
     <string name="add_new_exam">Add new exam</string>
+
+    <string name="contacts.emptyList">No contacts</string>
+    <string name="contacts.title">Contacts</string>
 </resources>
