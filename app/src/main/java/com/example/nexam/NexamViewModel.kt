@@ -8,13 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.nexam.data.Exam
 import com.example.nexam.data.ExamDao
 import kotlinx.coroutines.launch
-import java.util.*
 
 /**
  * View Model to keep a reference to the nEXam repository and an up-to-date list of all exams.
  *
  */
-class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
+class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
 
     // Cache all exams form the database using LiveData.
     val allExams: LiveData<List<Exam>> = examDao.getExam().asLiveData()
@@ -116,11 +115,11 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
 /**
  * Factory class to instantiate the [ViewModel] instance.
  */
-class nEXamViewModelFactory(private val examDao: ExamDao) : ViewModelProvider.Factory {
+class NexamViewModelFactory(private val examDao: ExamDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(nEXamViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(NexamViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return nEXamViewModel(examDao) as T
+            return NexamViewModel(examDao) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
