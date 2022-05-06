@@ -3,7 +3,6 @@ package com.example.nexam.features
 import androidx.test.rule.ActivityTestRule
 import com.example.nexam.TestSuite
 import com.example.nexam.MainActivity
-import com.example.nexam.steps.ContactListSteps
 import com.example.nexam.steps.DetailsSteps
 import com.example.nexam.steps.ScreenshotSteps
 import com.example.nexam.steps.ShowDashboardSteps
@@ -37,7 +36,7 @@ class ShowDashbaordFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTes
             return GreenCoffeeConfig()
                 .withFeatureFromAssets("assets/showDashboard.feature")
                 .takeScreenshotOnFail()
-                .scenarios(TestSuite.ENGLISH, TestSuite.SPANISH)
+                .scenarios(TestSuite.ENGLISH, TestSuite.SPANISH, TestSuite.GERMAN)
         }
     }
 }
