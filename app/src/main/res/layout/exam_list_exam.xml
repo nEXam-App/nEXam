@@ -24,7 +24,7 @@
         android:layout_width="100dp"
         android:layout_below="@+id/exam_name"
         android:layout_marginStart="@dimen/margin_between_elements"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif"
         android:textAlignment="center"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/exam_name"
