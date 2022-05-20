@@ -32,7 +32,9 @@ class AddExamFragment : Fragment() {
     private val viewModel: nEXamViewModel by activityViewModels {
         nEXamViewModelFactory(
             (activity?.application as nEXamApplication).database
-                .ExamDao()
+                .ExamDao(),
+            (activity?.application as nEXamApplication).database
+                .TopicDao()
         )
     }
     private val navigationArgs: ExamDetailFragmentArgs by navArgs()

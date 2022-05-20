@@ -21,7 +21,8 @@ class ExamDetailFragment : Fragment() {
 
     private val viewModel: nEXamViewModel by activityViewModels {
         nEXamViewModelFactory(
-            (activity?.application as nEXamApplication).database.ExamDao()
+            (activity?.application as nEXamApplication).database.ExamDao(),
+            (activity?.application as nEXamApplication).database.TopicDao()
         )
     }
 
@@ -34,6 +35,7 @@ class ExamDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentExamDetailBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -93,6 +95,12 @@ class ExamDetailFragment : Fragment() {
         viewModel.retrieveExam(id).observe(this.viewLifecycleOwner) { selectedExam ->
             exam = selectedExam
             bind(exam)
+        }
+        binding.addTopic.setOnClickListener {
+            val action = ExamDetailFragmentDirections.actionExamDetailFragmentToAddTopicFragment(
+                getString(R.string.add_new_topic)
+            )
+            this.findNavController().navigate(action)
         }
     }
 

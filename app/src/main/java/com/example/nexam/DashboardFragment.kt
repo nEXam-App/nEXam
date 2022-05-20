@@ -16,7 +16,8 @@ import com.example.nexam.databinding.DashboardFragmentBinding
 class DashboardFragment : Fragment() {
     private val viewModel: nEXamViewModel by activityViewModels {
         nEXamViewModelFactory(
-            (activity?.application as nEXamApplication).database.ExamDao()
+            (activity?.application as nEXamApplication).database.ExamDao(),
+            (activity?.application as nEXamApplication).database.TopicDao()
         )
     }
 

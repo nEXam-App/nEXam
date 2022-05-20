@@ -14,7 +14,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.nexam.data.Exam
+import com.example.nexam.data.Topic
 import com.example.nexam.databinding.FragmentAddExamBinding
+import com.example.nexam.databinding.FragmentAddTopicBinding
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 import java.text.SimpleDateFormat
@@ -25,24 +27,25 @@ import java.text.SimpleDateFormat
 class AddTopicFragment : Fragment() {
 
     var textview_date: TextInputEditText? = null
-    var cal = Calendar.getInstance()
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
     // to share the ViewModel across fragments.
     private val viewModel: nEXamViewModel by activityViewModels {
         nEXamViewModelFactory(
             (activity?.application as nEXamApplication).database
-                .ExamDao()
+                .ExamDao(),
+            (activity?.application as nEXamApplication).database
+                .TopicDao()
         )
     }
-    private val navigationArgs: ExamDetailFragmentArgs by navArgs()
+    private val navigationArgs: AddTopicFragmentArgs by navArgs()
 
-    lateinit var exam: Exam
+    lateinit var topic: Topic
 
     // Binding object instance corresponding to the fragment_add_exam.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment
-    private var _binding: FragmentAddExamBinding? = null
+    private var _binding: FragmentAddTopicBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -50,8 +53,7 @@ class AddTopicFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAddExamBinding.inflate(inflater, container, false)
-        addPickDate()
+        _binding = FragmentAddTopicBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -59,32 +61,36 @@ class AddTopicFragment : Fragment() {
     /**
      * Returns true if the EditTexts are not empty
      */
-    private fun isEntryValid(): Boolean {
-        return viewModel.isEntryValid(
-            binding.examName.text.toString()
+    private fun isTopicEntryValid(): Boolean {
+        return viewModel.isTopicEntryValid(
+            binding.topicName.text.toString()
         )
     }
 
     /**
      * Binds views with the passed in [exam] information.
      */
-    private fun bind(exam: Exam) {
+    private fun bind(topic: Topic) {
         binding.apply {
-            examName.setText(exam.nameOfSubject, TextView.BufferType.SPANNABLE)
-            date.setText(exam.dateOfExam.toString(), TextView.BufferType.SPANNABLE)
-            saveAction.setOnClickListener { updateExam() }
+            topicName.setText(topic.nameOfTopic, TextView.BufferType.SPANNABLE)
+            examName.setText(topic.nameOfSubject, TextView.BufferType.SPANNABLE)
+            difficulty.setText(topic.difficulty, TextView.BufferType.SPANNABLE)
+            remainingTime.setText(topic.remainingTime, TextView.BufferType.SPANNABLE)
+            saveAction.setOnClickListener { updateTopic() }
         }
     }
 
     /**
      * Inserts the new exam into database and navigates up to list fragment.
      */
-    private fun addNewExam() {
-        val date = binding.date.text.toString()
-        if (isEntryValid()) {
-            viewModel.addNewExam(
-                binding.examName.text.toString(),
-                date,
+    private fun addNewTopic() {
+        val subject = binding.examName.text.toString()
+        val difficulty = binding.difficulty as Int
+        if (isTopicEntryValid()) {
+            viewModel.addNewTopic(
+                binding.topicName.text.toString(),
+                subject,
+                difficulty
             )
             val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
@@ -94,13 +100,14 @@ class AddTopicFragment : Fragment() {
     /**
      * Updates an existing exam in the database and navigates up to list fragment.
      */
-    private fun updateExam() {
-        if (isEntryValid()) {
-            val date = binding.date.text.toString()
-            viewModel.updateExam(
-                this.navigationArgs.examId,
+    private fun updateTopic() {
+        if (isTopicEntryValid()) {
+            viewModel.updateTopic(
+                this.binding.topicName.text.toString(),
                 this.binding.examName.text.toString(),
-                date
+                this.binding.remainingTime as Int,
+                this.binding.difficulty as Int,
+                this.binding.checkboxProcess as Boolean
             )
             val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
@@ -116,15 +123,15 @@ class AddTopicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val id = navigationArgs.examId
+        val id = navigationArgs.topicId
         if (id > 0) {
-            viewModel.retrieveExam(id).observe(this.viewLifecycleOwner) { selectedExam ->
-                exam = selectedExam
-                bind(exam)
+            viewModel.retrieveTopic(id).observe(this.viewLifecycleOwner) { selectedExam ->
+                topic = selectedExam
+                bind(topic)
             }
         } else {
             binding.saveAction.setOnClickListener {
-                addNewExam()
+                addNewTopic()
             }
         }
     }
@@ -141,41 +148,7 @@ class AddTopicFragment : Fragment() {
         _binding = null
     }
 
-    /**
-     * Update Date in View
-     */
-    private fun updateDateInView() {
-        val myFormat = "dd/MM/yyyy" // mention the format you need
-        val sdf = SimpleDateFormat(myFormat, Locale.GERMANY)
-        textview_date?.setText(sdf.format(cal.getTime()), TextView.BufferType.SPANNABLE)
-    }
 
-    /**
-     * Adds dataSet and onClick Listener
-     */
-    private fun addPickDate(){
-        // get the references from layout file
-        textview_date = binding.date
 
-        // create an OnDateSetListener
-        val dateSetListener =
-            DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, month)
-                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                updateDateInView()
-            }
 
-        // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
-        textview_date!!.setOnClickListener {
-            DatePickerDialog(
-                requireContext(),
-                dateSetListener,
-                // set DatePickerDialog to point to today's date when it loads up
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)
-            ).show()
-        }
-    }
 }

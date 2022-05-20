@@ -20,6 +20,8 @@ data class Topic(
     val nameOfTopic: String,
     @ColumnInfo(name = "subject")
     val nameOfSubject: String,
+    @ColumnInfo(name = "difficulty")
+    val difficulty: Int,
     @ColumnInfo(name = "time")
     val remainingTime: Int,
     @ColumnInfo(name = "status")

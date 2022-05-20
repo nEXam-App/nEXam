@@ -21,6 +21,10 @@
     <string name="pick_date">Pick Date</string>
     <string name="add_new_exam">Add new exam</string>
     <string name="add_new_topic">Add new topic</string>
+    <string name="topic">Topic name</string>
+    <string name="remainingTime">Remaining time</string>
+    <string name="difficulty">How difficult is the Topic(1-5)</string>
+    <string name="process">Finished this topic</string>
 
     <string name="contacts.emptyList">No contacts</string>
     <string name="contacts.title">Contacts</string>
