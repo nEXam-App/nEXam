@@ -5,6 +5,7 @@
     <string name="quantity_req">Quantity in Stock <font color='#FF0000'>*</font></string>
     <string name="subject_req">Subject <font color='#FF0000'>*</font></string>
     <string name="save_action">Save</string>
+    <string name="pick_date_action">Pick Date</string>
     <string name="exam_detail_fragment_title">Exam Details</string>
     <string name="add_fragment_title">Add Exam</string>
     <string name="edit_fragment_title">Edit Exam</string>

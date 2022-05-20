@@ -1,5 +1,6 @@
 package com.example.nexam
 
+import android.app.DatePickerDialog
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,19 +14,23 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.nexam.data.Exam
 import com.example.nexam.databinding.FragmentAddExamBinding
+import com.google.android.material.textfield.TextInputEditText
 import java.util.*
-//TESt
+import java.text.SimpleDateFormat
 
 /**
  * Fragment to add or update an exam in the nEXam database.
  */
 class AddExamFragment : Fragment() {
 
+    var textview_date: TextInputEditText? = null
+    var cal = Calendar.getInstance()
+
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
     // to share the ViewModel across fragments.
-    private val viewModel: nEXamViewModel by activityViewModels {
-        nEXamViewModelFactory(
-            (activity?.application as nEXamApplication).database
+    private val viewModel: NexamViewModel by activityViewModels {
+        NexamViewModelFactory(
+            (activity?.application as NexamApplication).database
                 .ExamDao()
         )
     }
@@ -45,6 +50,8 @@ class AddExamFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddExamBinding.inflate(inflater, container, false)
+        addPickDate()
+
         return binding.root
     }
 
@@ -131,5 +138,43 @@ class AddExamFragment : Fragment() {
                 InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
         _binding = null
+    }
+
+    /**
+     * Update Date in View
+     */
+    private fun updateDateInView() {
+        val myFormat = "dd/MM/yyyy" // mention the format you need
+        val sdf = SimpleDateFormat(myFormat, Locale.GERMANY)
+        textview_date?.setText(sdf.format(cal.getTime()), TextView.BufferType.SPANNABLE)
+    }
+
+    /**
+     * Adds dataSet and onClick Listener
+     */
+    private fun addPickDate(){
+        // get the references from layout file
+        textview_date = binding.date
+
+        // create an OnDateSetListener
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, month)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                updateDateInView()
+            }
+
+        // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
+        textview_date!!.setOnClickListener {
+            DatePickerDialog(
+                requireContext(),
+                dateSetListener,
+                // set DatePickerDialog to point to today's date when it loads up
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
     }
 }
