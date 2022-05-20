@@ -15,10 +15,12 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import java.io.IOException
 
-@RunWith(Parameterized::class)
+//@RunWith(Parameterized::class)
 class DetailsFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scenarioConfig) {
 
-    @Rule @JvmField
+    //TODO REMOVE IF NOT NEEDED ANYMORE
+
+  /*  @Rule @JvmField
     var activity = ActivityTestRule(MainActivity::class.java)
 
     @Test
@@ -39,5 +41,5 @@ class DetailsFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scen
                 .takeScreenshotOnFail()
                 .scenarios(TestSuite.ENGLISH, TestSuite.SPANISH)
         }
-    }
+    }*/
 }

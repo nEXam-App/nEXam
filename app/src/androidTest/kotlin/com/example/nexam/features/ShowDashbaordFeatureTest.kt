@@ -3,9 +3,9 @@ package com.example.nexam.features
 import androidx.test.rule.ActivityTestRule
 import com.example.nexam.TestSuite
 import com.example.nexam.MainActivity
-import com.example.nexam.steps.ContactListSteps
 import com.example.nexam.steps.DetailsSteps
 import com.example.nexam.steps.ScreenshotSteps
+import com.example.nexam.steps.ShowDashboardSteps
 import com.mauriciotogneri.greencoffee.GreenCoffeeConfig
 import com.mauriciotogneri.greencoffee.GreenCoffeeTest
 import com.mauriciotogneri.greencoffee.ScenarioConfig
@@ -14,18 +14,16 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
-//@RunWith(Parameterized::class)
-class ContactListFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scenarioConfig) {
+@RunWith(Parameterized::class)
+class ShowDashbaordFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scenarioConfig) {
 
-    //TODO REMOVE IF NOT NEEDED ANYMORE
-
-   /* @Rule @JvmField
+    @Rule @JvmField
     val activity = ActivityTestRule(MainActivity::class.java, true, true)
 
     @Test
     fun test() {
         start(
-            ContactListSteps(),
+            ShowDashboardSteps(),
             DetailsSteps(),
             ScreenshotSteps())
     }
@@ -36,10 +34,10 @@ class ContactListFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(
         @JvmStatic
         fun scenarios(): Iterable<ScenarioConfig> {
             return GreenCoffeeConfig()
-                .withFeatureFromAssets("assets/contacts.feature")
+                .withFeatureFromAssets("assets/showDashboard.feature")
                 .takeScreenshotOnFail()
-                .scenarios(TestSuite.ENGLISH, TestSuite.SPANISH)
+                .scenarios(TestSuite.ENGLISH, TestSuite.SPANISH, TestSuite.GERMAN)
         }
-    }*/
+    }
 }
 
