@@ -8,3 +8,8 @@ Feature: Use Case Show Dashboard
     And I take a screenshot named 'exams'
     When I select the exam called 'Compilerbau'
     Then I see the detail screen for 'Compilerbau'
+
+  Scenario: Selecting an exam from the list
+    Given I am on the dashboard screen
+    When I select the exam called 'Mathe'
+    Then I see the detail screen for 'Mathe'

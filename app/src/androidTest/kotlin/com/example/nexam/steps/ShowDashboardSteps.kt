@@ -21,11 +21,6 @@ class ShowDashboardSteps : GreenCoffeeSteps() {
         onView(ViewMatchers.withText(examname)).perform(ViewActions.click())
     }
 
-    /*@Then("^I see an empty contact list$")
-    fun iSeeAnEmptyContactList() {
-        onViewWithText(R.string.contacts_emptyList).isDisplayed
-    }*/
-
     @Then("^I see the exam screen$")
     fun iSeeTheContactsScreen() {
         onViewWithText(R.string.contacts_title).isDisplayed
