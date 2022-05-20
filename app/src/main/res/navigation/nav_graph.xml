@@ -47,7 +47,7 @@
             android:defaultValue="-1"
             app:argType="integer" />
         <action
-            android:id="@+id/action_addItemFragment_to_itemListFragment"
+            android:id="@+id/action_addExamFragment_to_examListFragment"
             app:destination="@id/dashboardFragment"
             app:popUpTo="@id/dashboardFragment"
             app:popUpToInclusive="true" />
@@ -65,7 +65,7 @@
         android:defaultValue="-1"
         app:argType="integer" />
     <action
-        android:id="@+id/action_addItemFragment_to_itemListFragment"
+        android:id="@+id/action_addTopicFragment_to_topicListFragment"
         app:destination="@id/examDetailFragment"
         app:popUpTo="@id/examDetailFragment"
         app:popUpToInclusive="true" />

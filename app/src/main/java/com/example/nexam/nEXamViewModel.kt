@@ -120,13 +120,14 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
      * Updates an existing topic in the database.
      */
     fun updateTopic(
+        topicId: Int,
         nameOfTopic: String,
         nameOfSubject: String,
         remainingTime: Int,
         difficulty: Int,
         process: Boolean
     ) {
-        val updatedTopic = getUpdatedTopicEntry(nameOfTopic, nameOfSubject, remainingTime, difficulty, process)
+        val updatedTopic = getUpdatedTopicEntry(topicId, nameOfTopic, nameOfSubject, remainingTime, difficulty, process)
         updateTopic(updatedTopic)
     }
 
@@ -201,8 +202,9 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
      * Called to update an existing entry in the nEXam database.
      * Returns an instance of the [Exam] entity class with the exam info updated by the user.
      */
-    private fun getUpdatedTopicEntry(nameOfTopic: String, nameOfSubject: String, remainingTime: Int, difficulty: Int, process: Boolean): Topic {
+    private fun getUpdatedTopicEntry(Id: Int,  nameOfTopic: String, nameOfSubject: String, remainingTime: Int, difficulty: Int, process: Boolean): Topic {
         return Topic(
+            id = Id,
             nameOfTopic = nameOfTopic,
             nameOfSubject = nameOfSubject,
             remainingTime = remainingTime,

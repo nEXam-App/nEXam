@@ -8,18 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.nexam.data.Exam
 import com.example.nexam.data.Topic
-import com.example.nexam.databinding.FragmentAddExamBinding
 import com.example.nexam.databinding.FragmentAddTopicBinding
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
-import java.text.SimpleDateFormat
 
 /**
  * Fragment to add or update an exam in the nEXam database.
@@ -92,7 +88,7 @@ class AddTopicFragment : Fragment() {
                 subject,
                 difficulty
             )
-            val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
+            val action = AddTopicFragmentDirections.actionAddTopicFragmentToTopicListFragment()
             findNavController().navigate(action)
         }
     }
@@ -103,13 +99,14 @@ class AddTopicFragment : Fragment() {
     private fun updateTopic() {
         if (isTopicEntryValid()) {
             viewModel.updateTopic(
+                this.navigationArgs.topicId,
                 this.binding.topicName.text.toString(),
                 this.binding.examName.text.toString(),
                 this.binding.remainingTime as Int,
                 this.binding.difficulty as Int,
                 this.binding.checkboxProcess as Boolean
             )
-            val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
+            val action = AddTopicFragmentDirections.actionAddTopicFragmentToTopicListFragment()
             findNavController().navigate(action)
         }
     }
