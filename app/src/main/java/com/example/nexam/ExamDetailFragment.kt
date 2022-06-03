@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.nexam.ExamDetailFragmentDirections.Companion.actionExamDetailFragmentToEditTopicFragment
 import com.example.nexam.data.Exam
 import com.example.nexam.databinding.FragmentExamDetailBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -58,7 +60,7 @@ class ExamDetailFragment : Fragment() {
     private fun editExam() {
         val action = ExamDetailFragmentDirections.actionExamDetailFragmentToAddExamFragment(
             getString(R.string.edit_fragment_title),
-            exam.id
+            exam.examId
         )
         this.findNavController().navigate(action)
     }
@@ -89,6 +91,15 @@ class ExamDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.examId
+
+        val adapter = TopicListAdapter {
+            val action =
+                ExamDetailFragmentDirections.actionExamDetailFragmentToEditTopicFragment(it.id,navigationArgs.examId)
+            this.findNavController().navigate(action)
+        }
+        binding.topicList.layoutManager = LinearLayoutManager(this.context)
+        binding.topicList.adapter = adapter
+
         // Retrieve the exam details using the examId.
         // Attach an observer on the data (instead of polling for changes) and only update the
         // the UI when the data actually changes.
@@ -98,7 +109,9 @@ class ExamDetailFragment : Fragment() {
         }
         binding.addTopic.setOnClickListener {
             val action = ExamDetailFragmentDirections.actionExamDetailFragmentToAddTopicFragment(
-                getString(R.string.add_new_topic)
+                //getString(R.string.add_new_topic),
+                exam.examId,
+                exam.nameOfSubject
             )
             this.findNavController().navigate(action)
         }

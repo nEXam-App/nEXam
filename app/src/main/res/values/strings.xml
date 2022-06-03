@@ -23,9 +23,9 @@
     <string name="add_new_topic">Add new topic</string>
     <string name="topic">Topic name</string>
     <string name="remainingTime">Remaining time</string>
-    <string name="difficulty">How difficult is the Topic(1-5)</string>
+    <string name="difficulty">Difficulty (1-5)</string>
     <string name="process">Finished this topic</string>
-
+    <string name="add_topic_fragment_title">Add Topic</string>
     <string name="contacts.emptyList">No contacts</string>
     <string name="contacts.title">Contacts</string>
 </resources>

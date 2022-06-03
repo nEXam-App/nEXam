@@ -10,16 +10,16 @@ import java.util.*
  */
 @Entity(tableName = "topic",
     foreignKeys = [ForeignKey(entity = Exam::class,
-        parentColumns = ["subject"],
-        childColumns = ["subject"],
+        parentColumns = ["examId"],
+        childColumns = ["subjectId"],
         onDelete = ForeignKey.CASCADE)])
 data class Topic(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     @ColumnInfo(name = "name")
     val nameOfTopic: String,
-    @ColumnInfo(name = "subject")
-    val nameOfSubject: String,
+    @ColumnInfo(name = "subjectId")
+    val idOfSubject: Int,
     @ColumnInfo(name = "difficulty")
     val difficulty: Int,
     @ColumnInfo(name = "time")

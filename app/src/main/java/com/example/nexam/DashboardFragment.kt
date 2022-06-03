@@ -38,7 +38,7 @@ class DashboardFragment : Fragment() {
 
         val adapter = ExamListAdapter {
             val action =
-                DashboardFragmentDirections.actionDashboardFragmentToExamDetailFragment(it.id)
+                DashboardFragmentDirections.actionDashboardFragmentToExamDetailFragment(it.examId)
             this.findNavController().navigate(action)
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)

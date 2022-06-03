@@ -109,7 +109,7 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
         dateOfExam: String
     ): Exam {
         return Exam(
-            id = examId,
+            examId = examId,
             nameOfSubject = examName,
             dateOfExam = dateOfExam
         )
@@ -122,12 +122,12 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
     fun updateTopic(
         topicId: Int,
         nameOfTopic: String,
-        nameOfSubject: String,
+        examId: Int,
         remainingTime: Int,
         difficulty: Int,
         process: Boolean
     ) {
-        val updatedTopic = getUpdatedTopicEntry(topicId, nameOfTopic, nameOfSubject, remainingTime, difficulty, process)
+        val updatedTopic = getUpdatedTopicEntry(topicId, nameOfTopic, examId, remainingTime, difficulty, process)
         updateTopic(updatedTopic)
     }
 
@@ -144,8 +144,8 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
     /**
      * Inserts the new exam into database.
      */
-    fun addNewTopic(nameOfSubject: String, nameOfTopic: String, difficulty: Int) {
-        val newTopic = getNewTopicEntry(nameOfSubject, nameOfTopic, difficulty)
+    fun addNewTopic(examId: Int, nameOfTopic: String, difficulty: Int) {
+        val newTopic = getNewTopicEntry(examId, nameOfTopic, difficulty)
         insertTopic(newTopic)
     }
 
@@ -188,9 +188,9 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
      * Returns an instance of the [Exam] entity class with the exam info entered by the user.
      * This will be used to add a new entry to the nEXam database.
      */
-    private fun getNewTopicEntry(examName: String, nameOfTopic: String, difficulty: Int): Topic {
+    private fun getNewTopicEntry(examId: Int, nameOfTopic: String, difficulty: Int): Topic {
         return Topic(
-            nameOfSubject = examName,
+            idOfSubject = examId,
             nameOfTopic = nameOfTopic,
             difficulty = difficulty,
             remainingTime = (difficulty * 3600000 * 4),
@@ -202,11 +202,11 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
      * Called to update an existing entry in the nEXam database.
      * Returns an instance of the [Exam] entity class with the exam info updated by the user.
      */
-    private fun getUpdatedTopicEntry(Id: Int,  nameOfTopic: String, nameOfSubject: String, remainingTime: Int, difficulty: Int, process: Boolean): Topic {
+    private fun getUpdatedTopicEntry(Id: Int,  nameOfTopic: String, examId: Int, remainingTime: Int, difficulty: Int, process: Boolean): Topic {
         return Topic(
             id = Id,
             nameOfTopic = nameOfTopic,
-            nameOfSubject = nameOfSubject,
+            idOfSubject = examId,
             remainingTime = remainingTime,
             difficulty = difficulty,
             process = process

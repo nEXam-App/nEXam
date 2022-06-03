@@ -17,7 +17,7 @@ interface ExamDao {
     @Query("SELECT * from exam ORDER BY subject ASC")
     fun getExam(): Flow<List<Exam>>
 
-    @Query("SELECT * from exam WHERE id = :id")
+    @Query("SELECT * from exam WHERE examId = :id")
     fun getExam(id: Int): Flow<Exam>
 
     // Specify the conflict strategy as IGNORE, when the user tries to add an

@@ -13,7 +13,7 @@ import java.util.*
     indices = [Index(value = ["subject"], unique = true)])
 data class Exam(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val examId: Int = 0,
     @ColumnInfo(name = "subject")
     val nameOfSubject: String,
     @ColumnInfo(name = "date")

@@ -17,6 +17,7 @@ import com.example.nexam.databinding.TopicListTopicBinding
 class TopicListAdapter(private val onTopicClicked: (Topic) -> Unit) :
     ListAdapter<Topic, TopicListAdapter.TopicViewHolder>(DiffCallback) {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopicViewHolder {
         return TopicViewHolder(
             TopicListTopicBinding.inflate(
@@ -39,7 +40,7 @@ class TopicListAdapter(private val onTopicClicked: (Topic) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(topic: Topic) {
-            binding.topicName.text = topic.nameOfSubject
+            binding.topicName.text = topic.nameOfTopic
             binding.remainingTime.text = topic.remainingTime as String
 
         }

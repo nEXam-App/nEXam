@@ -31,7 +31,10 @@
             app:destination="@id/addExamFragment" />
         <action
             android:id="@+id/action_examDetailFragment_to_addTopicFragment"
-            app:destination="@id/addTopicFragment" />
+            app:destination="@id/addTopicFragment"/>
+        <action
+            android:id="@+id/action_examDetailFragment_to_editTopicFragment"
+            app:destination="@id/editTopicFragment"/>
     </fragment>
 
     <fragment
@@ -55,19 +58,37 @@
     <fragment
         android:id="@+id/addTopicFragment"
         android:name="com.example.nexam.AddTopicFragment"
-        android:label="{title}"
+        android:label="@string/add_topic_fragment_title"
         tools:layout="@layout/fragment_add_topic">
-    <argument
-        android:name="title"
-        app:argType="string" />
-    <argument
-        android:name="topic_id"
-        android:defaultValue="-1"
-        app:argType="integer" />
-    <action
-        android:id="@+id/action_addTopicFragment_to_topicListFragment"
-        app:destination="@id/examDetailFragment"
-        app:popUpTo="@id/examDetailFragment"
-        app:popUpToInclusive="true" />
+        <argument
+            android:name="exam_id"
+            app:argType="integer" />
+        <argument
+            android:name="exam_name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_addTopicFragment_to_topicListFragment"
+            app:destination="@id/examDetailFragment"
+            app:popUpTo="@id/examDetailFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/editTopicFragment"
+        android:name="com.example.nexam.EditTopicFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_edit_topic">
+        <argument
+            android:name="topic_id"
+            app:argType="integer" />
+        <argument
+            android:name="exam_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_addTopicFragment_to_topicListFragment"
+            app:destination="@id/examDetailFragment"
+            app:popUpTo="@id/examDetailFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
 </navigation>
