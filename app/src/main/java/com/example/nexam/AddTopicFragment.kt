@@ -49,7 +49,7 @@ class AddTopicFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddTopicBinding.inflate(inflater, container, false)
-
+        binding.examName.setText(navigationArgs.examName)
         return binding.root
     }
 
