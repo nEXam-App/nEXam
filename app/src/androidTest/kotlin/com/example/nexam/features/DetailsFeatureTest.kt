@@ -2,13 +2,15 @@ package com.example.nexam.features
 
 import com.mauriciotogneri.greencoffee.GreenCoffeeTest
 import com.mauriciotogneri.greencoffee.ScenarioConfig
+import org.junit.Rule
 
 //@RunWith(Parameterized::class)
 class DetailsFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scenarioConfig) {
 
-    //TODO REMOVE IF NOT NEEDED ANYMORE
+    /*//TODO REMOVE IF NOT NEEDED ANYMORE
 
-   @Rule @JvmField
+   @Rule
+   @JvmField
     var activity = ActivityTestRule(MainActivity::class.java)
 
     @Test
@@ -29,5 +31,5 @@ class DetailsFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scen
                 .takeScreenshotOnFail()
                 .scenarios(TestSuite.ENGLISH, TestSuite.SPANISH)
         }
-    }
+    }*/
 }
