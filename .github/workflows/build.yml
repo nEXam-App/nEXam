@@ -1,96 +1,96 @@
-name: Build
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened]
-# jobs:
-#   gradle:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v1
-#       - uses: actions/setup-java@v1
-#         with:
-#           java-version: 8
+# name: Build
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     types: [opened, synchronize, reopened]
+# # jobs:
+# #   gradle:
+# #     runs-on: ubuntu-latest
+# #     steps:
+# #       - uses: actions/checkout@v1
+# #       - uses: actions/setup-java@v1
+# #         with:
+# #           java-version: 8
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    name: Build
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup java
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
-      - name: Gradle build
-        uses: eskatos/gradle-command-action@v1
-        with:
-          arguments: --refresh-dependencies --stacktrace --scan clean build
-      - name: Sonarqube
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        # run: ./gradlew jacocoTestReport sonarqube --stacktrace -i
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     name: Build
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Setup java
+#         uses: actions/setup-java@v1
+#         with:
+#           java-version: 11
+#       - name: Gradle build
+#         uses: eskatos/gradle-command-action@v1
+#         with:
+#           arguments: --refresh-dependencies --stacktrace --scan clean build
+#       - name: Sonarqube
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#         # run: ./gradlew jacocoTestReport sonarqube --stacktrace -i
 
    
 
 
-      # - uses: actions/checkout@v2
-      #   with:
-      #     fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      # - name: Set up JDK 11
-      #   uses: actions/setup-java@v1
-      #   with:
-      #     java-version: 11
-      # - name: Cache SonarCloud packages
-      #   uses: actions/cache@v1
-      #   with:
-      #     path: ~/.sonar/cache
-      #     key: ${{ runner.os }}-sonar
-      #     restore-keys: ${{ runner.os }}-sonar
-      # - name: Cache Gradle packages
-      #   uses: actions/cache@v1
-      #   with:
-      #     path: ~/.gradle/caches
-      #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-      #     restore-keys: ${{ runner.os }}-gradle
-      # - name: Build and analyze
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #   run: ./gradlew build sonarqube --info
+#       # - uses: actions/checkout@v2
+#       #   with:
+#       #     fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+#       # - name: Set up JDK 11
+#       #   uses: actions/setup-java@v1
+#       #   with:
+#       #     java-version: 11
+#       # - name: Cache SonarCloud packages
+#       #   uses: actions/cache@v1
+#       #   with:
+#       #     path: ~/.sonar/cache
+#       #     key: ${{ runner.os }}-sonar
+#       #     restore-keys: ${{ runner.os }}-sonar
+#       # - name: Cache Gradle packages
+#       #   uses: actions/cache@v1
+#       #   with:
+#       #     path: ~/.gradle/caches
+#       #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+#       #     restore-keys: ${{ runner.os }}-gradle
+#       # - name: Build and analyze
+#       #   env:
+#       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#       #   run: ./gradlew build sonarqube --info
 
-           # Execute Gradle commands in GitHub Actions workflows
-      # => https://github.com/marketplace/actions/gradle-command
-      # - uses: eskatos/gradle-command-action@v1
-      #   with:
-      #     arguments: runOnGitHub
-      #     wrapper-cache-enabled: true
-      #     dependencies-cache-enabled: true
-      #     configuration-cache-enabled: true
+#            # Execute Gradle commands in GitHub Actions workflows
+#       # => https://github.com/marketplace/actions/gradle-command
+#       # - uses: eskatos/gradle-command-action@v1
+#       #   with:
+#       #     arguments: runOnGitHub
+#       #     wrapper-cache-enabled: true
+#       #     dependencies-cache-enabled: true
+#       #     configuration-cache-enabled: true
 
 
-    # instance_type: linux_x2
-    # environment:
-    #   vars:
-    #     SONAR_TOKEN: Encrypted(Z0FBQUFBQmhHcXlJSGVwRVVmWF9GNVdGaWR3Z0M2ZVdWbFRUd201MHF2bHdIeTZXbjU2ZXhqUEw4MGlxSlRHQ0h1T1hiNkFrSUlhTHFjdDhaT2dRd29CR1Q0LXdZMkdLUElBOHRsc1p1WFczb2V1c1poczFlUTJybHlla1ZqemU2azE1SGpzd08xelE=)
-    #     SONAR_PROJECT_KEY: Encrypted(Z0FBQUFBQmhHcXp6MFBCVHo3N3JGYnJRSVpzdm9ES2FQNENmVnZtZFBhQTQ1UVhBckQxakdOTFphM21ZZnRHVGJxeTdRNEllTW5ZUDlneTJ1cEZSbGZsZG1WUWJhcjFwNjVRamdWcTFTX0JIaGJ0OWQwdm04T3l5Q2hoS1RuSFBEWW90SUNWQndSUElCNDNyRmQtNzFJN2kxa1otTTNDeEZ3PT0=)
-    #     SONAR_ORG_KEY: Encrypted(Z0FBQUFBQmhHcTBaM0QwN1lER0k4SHphVWpiOXNKLWFxSzQ2N0QxTXBGUWRORWppM21hVFM3UXFMZDA1YUFPd1ZvNWZRN04wOHc0Y0toM0txWXhzc2RPbUs4Qi1Oa2xzWVE9PQ==)
-    # triggering:
-    #     events:
-    #         - pull_request
-    #     branch_patterns:
-    #         - pattern: gradle-config
-    #           include: true
-    #           source: true    
-    # scripts:
-    #   - |
-    #     # Generate debug build
-    #     ./gradlew assembleDebug        
-    #   - |
-    #     # Generate and upload code analysis report
-    #     ./gradlew sonarqube
-    # artifacts:
-    #   - app/build/outputs/**/*.apk
+#     # instance_type: linux_x2
+#     # environment:
+#     #   vars:
+#     #     SONAR_TOKEN: Encrypted(Z0FBQUFBQmhHcXlJSGVwRVVmWF9GNVdGaWR3Z0M2ZVdWbFRUd201MHF2bHdIeTZXbjU2ZXhqUEw4MGlxSlRHQ0h1T1hiNkFrSUlhTHFjdDhaT2dRd29CR1Q0LXdZMkdLUElBOHRsc1p1WFczb2V1c1poczFlUTJybHlla1ZqemU2azE1SGpzd08xelE=)
+#     #     SONAR_PROJECT_KEY: Encrypted(Z0FBQUFBQmhHcXp6MFBCVHo3N3JGYnJRSVpzdm9ES2FQNENmVnZtZFBhQTQ1UVhBckQxakdOTFphM21ZZnRHVGJxeTdRNEllTW5ZUDlneTJ1cEZSbGZsZG1WUWJhcjFwNjVRamdWcTFTX0JIaGJ0OWQwdm04T3l5Q2hoS1RuSFBEWW90SUNWQndSUElCNDNyRmQtNzFJN2kxa1otTTNDeEZ3PT0=)
+#     #     SONAR_ORG_KEY: Encrypted(Z0FBQUFBQmhHcTBaM0QwN1lER0k4SHphVWpiOXNKLWFxSzQ2N0QxTXBGUWRORWppM21hVFM3UXFMZDA1YUFPd1ZvNWZRN04wOHc0Y0toM0txWXhzc2RPbUs4Qi1Oa2xzWVE9PQ==)
+#     # triggering:
+#     #     events:
+#     #         - pull_request
+#     #     branch_patterns:
+#     #         - pattern: gradle-config
+#     #           include: true
+#     #           source: true    
+#     # scripts:
+#     #   - |
+#     #     # Generate debug build
+#     #     ./gradlew assembleDebug        
+#     #   - |
+#     #     # Generate and upload code analysis report
+#     #     ./gradlew sonarqube
+#     # artifacts:
+#     #   - app/build/outputs/**/*.apk
