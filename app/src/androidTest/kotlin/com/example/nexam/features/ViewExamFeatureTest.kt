@@ -6,6 +6,7 @@ import com.example.nexam.MainActivity
 import com.example.nexam.steps.DetailsSteps
 import com.example.nexam.steps.ScreenshotSteps
 import com.example.nexam.steps.ShowDashboardSteps
+import com.example.nexam.steps.ViewExamSteps
 import com.mauriciotogneri.greencoffee.GreenCoffeeConfig
 import com.mauriciotogneri.greencoffee.GreenCoffeeTest
 import com.mauriciotogneri.greencoffee.ScenarioConfig
@@ -25,7 +26,7 @@ class ViewExamFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(sce
     fun test() {
         start(
             ShowDashboardSteps(),
-            DetailsSteps(),
+            ViewExamSteps(),
             ScreenshotSteps()
         )
     }

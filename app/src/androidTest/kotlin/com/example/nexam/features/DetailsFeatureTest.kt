@@ -8,7 +8,7 @@ class DetailsFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scen
 
     //TODO REMOVE IF NOT NEEDED ANYMORE
 
-  /*  @Rule @JvmField
+   @Rule @JvmField
     var activity = ActivityTestRule(MainActivity::class.java)
 
     @Test
@@ -29,5 +29,5 @@ class DetailsFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scen
                 .takeScreenshotOnFail()
                 .scenarios(TestSuite.ENGLISH, TestSuite.SPANISH)
         }
-    }*/
+    }
 }

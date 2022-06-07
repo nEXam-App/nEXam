@@ -16,7 +16,7 @@ class ViewExamSteps : GreenCoffeeSteps() {
         onViewWithId(R.id.exam_name).contains(name)
     }
 
-    @Then("^I see the date is (\\d+)$")
+    @Then("^I see the date is '([\\w| ]+)'$")
     fun iSeeTheDateIs(date: String?) {
         onViewWithId(R.id.date).contains(date)
     }
