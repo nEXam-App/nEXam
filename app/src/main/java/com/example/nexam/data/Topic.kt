@@ -13,6 +13,7 @@ import java.util.*
         parentColumns = ["examId"],
         childColumns = ["subjectId"],
         onDelete = ForeignKey.CASCADE)])
+
 data class Topic(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,

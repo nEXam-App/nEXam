@@ -1,5 +1,6 @@
 package com.example.nexam
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -9,6 +10,8 @@ import com.example.nexam.data.Exam
 import com.example.nexam.data.ExamDao
 import com.example.nexam.data.Topic
 import com.example.nexam.data.TopicDao
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -20,7 +23,7 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
 
     // Cache all exams form the database using LiveData.
     val allExams: LiveData<List<Exam>> = examDao.getExam().asLiveData()
-    val allTopics: LiveData<List<Topic>> = topicDao.getTopic().asLiveData()
+    val allTopics: LiveData<List<Topic>> = topicDao.getTopics().asLiveData()
 
 
     /**
@@ -147,6 +150,7 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
     fun addNewTopic(examId: Int, nameOfTopic: String, difficulty: Int) {
         val newTopic = getNewTopicEntry(examId, nameOfTopic, difficulty)
         insertTopic(newTopic)
+        Log.i("success","Topic was added")
     }
 
     /**
@@ -154,7 +158,25 @@ class nEXamViewModel(private val examDao: ExamDao, private  val topicDao: TopicD
      */
     private fun insertTopic(topic: Topic) {
         viewModelScope.launch {
+            Log.i("success", "topicid: "+topic.id.toString())
+            Log.i("success", "topicexamid: "+topic.idOfSubject.toString())
             topicDao.insert(topic)
+            Log.i("success","Topic was inseret")
+            val ret: Topic? = topicDao.getTopic(topic.id).asLiveData().value
+            val ex: Exam? = examDao.getExam(topic.idOfSubject).asLiveData().value
+            if (ret != null) {
+                Log.i("success", ret.nameOfTopic)
+            }
+            else{
+                Log.i("success", "looser")
+                if (ex != null) {
+                    Log.i("success",ex.nameOfSubject)
+                }
+                else{
+                    Log.i("success", allExams.toString())
+                    Log.i("success", "looser again")
+                }
+            }
         }
     }
 

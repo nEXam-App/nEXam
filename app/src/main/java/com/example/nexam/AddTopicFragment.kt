@@ -13,10 +13,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.nexam.data.Exam
 import com.example.nexam.data.Topic
 import com.example.nexam.databinding.FragmentAddTopicBinding
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
+import java.util.logging.Level.INFO
 
 /**
  * Fragment to add or update an exam in the nEXam database.
@@ -71,13 +73,24 @@ class AddTopicFragment : Fragment() {
             binding.apply {
                 examName.setText(navigationArgs.examName)
             }
+            viewModel.retrieveExam(navigationArgs.examId).observe(this.viewLifecycleOwner) { selectedExam ->
+                val exam = selectedExam
+                Log.i("success", "exam name: "+exam.nameOfSubject)}
             viewModel.addNewTopic(
                 navigationArgs.examId,
                 binding.topicName.text.toString(),
                 difficulty
             )
+            viewModel.retrieveTopic(1).observe(this.viewLifecycleOwner) { selectedExam ->
+                val topic = selectedExam
+                if(topic != null){
+                    Log.i("success", "topic name: "+topic.nameOfTopic)}
+                else{
+                    Log.i("success", "looser times ten")}
+                }
             val action = AddTopicFragmentDirections.actionAddTopicFragmentToTopicListFragment(navigationArgs.examId)
             findNavController().navigate(action)
+
         }
     }
 

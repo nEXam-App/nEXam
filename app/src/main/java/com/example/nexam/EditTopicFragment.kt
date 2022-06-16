@@ -106,8 +106,8 @@ class EditTopicFragment : Fragment() {
 
         val id = navigationArgs.topicId
 
-        viewModel.retrieveTopic(id).observe(this.viewLifecycleOwner) { selectedExam ->
-            topic = selectedExam
+        viewModel.retrieveTopic(id).observe(this.viewLifecycleOwner) { selectedTopic ->
+            topic = selectedTopic
             bind(topic)
         }
 

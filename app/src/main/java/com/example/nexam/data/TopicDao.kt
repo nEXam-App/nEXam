@@ -15,10 +15,11 @@ import kotlinx.coroutines.flow.Flow
 interface TopicDao {
 
     @Query("SELECT * from topic ORDER BY name ASC")
-    fun getTopic(): Flow<List<Topic>>
+    fun getTopics(): Flow<List<Topic>>
 
     @Query("SELECT * from topic WHERE id = :id")
     fun getTopic(id: Int): Flow<Topic>
+
 
     // Specify the conflict strategy as IGNORE, when the user tries to add an
     // existing Exam into the database Room ignores the conflict.
