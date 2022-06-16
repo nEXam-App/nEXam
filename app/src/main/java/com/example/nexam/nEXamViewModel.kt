@@ -37,7 +37,7 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
     /**
      * Launching a new coroutine to update an exam in a non-blocking way
      */
-    private fun updateExam(exam: Exam) {
+    fun updateExam(exam: Exam) {
         viewModelScope.launch {
             examDao.update(exam)
         }
