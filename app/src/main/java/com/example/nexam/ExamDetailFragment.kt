@@ -1,6 +1,9 @@
 package com.example.nexam
 
+import android.icu.text.DecimalFormat
+import android.icu.text.NumberFormat
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +21,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class ExamDetailFragment : Fragment() {
     private val navigationArgs: ExamDetailFragmentArgs by navArgs()
     lateinit var exam: Exam
+    var counter = 0
+    var runningTimer = false
 
     private val viewModel: nEXamViewModel by activityViewModels {
         nEXamViewModelFactory(
@@ -44,10 +49,53 @@ class ExamDetailFragment : Fragment() {
         binding.apply {
             examName.text = exam.nameOfSubject
             date.text = exam.dateOfExam.toString()
+            difficulty.text = exam.difficulty.toString()
+            remainingTime.text = exam.remainingTime.toString()
 
+            timer.setOnClickListener{startTimeCounter()}
             deleteExam.setOnClickListener { showConfirmationDialog() }
             editExam.setOnClickListener { editExam() }
         }
+    }
+
+
+    private fun startTimeCounter() {
+        //val countTime: InputTextField = findViewById(R.id.countTime)
+        var timer = object : CountDownTimer(binding.remainingTime.text.toString().toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val f: NumberFormat = DecimalFormat("00")
+                val hour = millisUntilFinished / 3600000 % 24
+                val min = millisUntilFinished / 60000 % 60
+                val sec = millisUntilFinished / 1000 % 60
+
+                binding.remainingTime.setText(
+                    getString(
+                        R.string.countTimeText,
+                        f.format(hour),
+                        f.format(min),
+                        f.format(sec)
+                    )
+                )
+                //counter++
+                binding.remainingTime.isEnabled = false
+            }
+
+            override fun onFinish() {
+                binding.remainingTime.setText(getString(R.string.countTimeFinished))
+                binding.remainingTime.isEnabled = true
+            }
+        }
+        if (runningTimer == false){
+            timer.start()
+            runningTimer = true
+        }
+        else{
+            timer.cancel()
+            runningTimer = false
+        }
+
+
+
     }
 
     /**

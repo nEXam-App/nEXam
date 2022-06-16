@@ -81,10 +81,12 @@ class AddExamFragment : Fragment() {
      */
     private fun addNewExam() {
         val date = binding.date.text.toString()
+        val difficulty: Int = Integer.parseInt(binding.difficulty.text.toString())
         if (isEntryValid()) {
             viewModel.addNewExam(
                 binding.examName.text.toString(),
                 date,
+                difficulty
             )
             val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
@@ -97,10 +99,12 @@ class AddExamFragment : Fragment() {
     private fun updateExam() {
         if (isEntryValid()) {
             val date = binding.date.text.toString()
+            val difficulty: Int = Integer.parseInt(binding.difficulty.text.toString())
             viewModel.updateExam(
                 this.navigationArgs.examId,
                 this.binding.examName.text.toString(),
-                date
+                date,
+                difficulty
             )
             val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)

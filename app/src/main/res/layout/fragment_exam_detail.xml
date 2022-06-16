@@ -25,6 +25,33 @@
         app:layout_constraintTop_toBottomOf="@+id/exam_name"
         tools:text="Date" />
 
+    <TextView
+        android:id="@+id/difficulty"
+        style="@style/Widget.nEXam.TextView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date"
+        tools:text="Difficulty" />
+
+    <TextView
+        android:id="@+id/remainingTime"
+        style="@style/Widget.nEXam.TextView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty"
+        tools:text="Remaining Time" />
+
+    <Button
+        android:id="@+id/timer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/stTimer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/remainingTime" />
     <Button
         android:id="@+id/delete_exam"
         style="?attr/materialButtonOutlinedStyle"
@@ -34,7 +61,7 @@
         android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/date" />
+        app:layout_constraintTop_toBottomOf="@id/timer" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/edit_exam"
