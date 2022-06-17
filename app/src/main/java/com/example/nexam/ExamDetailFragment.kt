@@ -1,10 +1,7 @@
 package com.example.nexam
 
-import android.icu.text.DecimalFormat
-import android.icu.text.NumberFormat
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,11 +19,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class ExamDetailFragment : Fragment() {
     private val navigationArgs: ExamDetailFragmentArgs by navArgs()
     lateinit var exam: Exam
-    var counter = 0
-    var runningTimer = false
     var remainingMillis: Long = 0
-    var time: Long = 0
     lateinit var timer:CountDownTimer
+    var timerRunning = false
 
     private val viewModel: NexamViewModel by activityViewModels {
         NexamViewModelFactory(
@@ -57,13 +52,21 @@ class ExamDetailFragment : Fragment() {
             difficulty.text = exam.difficulty.toString()
             remainingTime.text = exam.remainingTime.toString()
             additionalNotes.text = exam.additionalNotes
+            finishedLabel.text = "Finished"
 
+            if(exam.finished) {
+                finishedLabel.visibility = View.VISIBLE
+            }
+            else{
+                finishedLabel.visibility = View.GONE
+            }
 
             startTimer.setOnClickListener { startTimeCounter()}
             stopTimer.setOnClickListener { stopTimeCounter()}
             stopTimer.isEnabled = false
-            deleteExam.setOnClickListener { showConfirmationDialog() }
+            deleteExam.setOnClickListener { showDeleteConfirmationDialog() }
             editExam.setOnClickListener { editExam() }
+            finishExam.setOnClickListener { showFinishConfirmationDialog()}
         }
     }
 
@@ -96,12 +99,14 @@ class ExamDetailFragment : Fragment() {
                 //binding.remainingTime.isEnabled = true
             }
         }.start()
+        timerRunning = true
         binding.startTimer.isEnabled = false
         binding.stopTimer.isEnabled = true
     }
 
     private fun stopTimeCounter(){
         timer.cancel()
+        timerRunning = false
         binding.startTimer.isEnabled = true
         binding.stopTimer.isEnabled = false
         exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
@@ -113,7 +118,10 @@ class ExamDetailFragment : Fragment() {
      * Navigate to the Edit exam screen.
      */
     private fun editExam() {
-        timer.cancel()
+        if(timerRunning){
+            timer.cancel()
+            timerRunning = false
+        }
         exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
         viewModel.updateExam(exam)
         val action = ExamDetailFragmentDirections.actionExamDetailFragmentToAddExamFragment(
@@ -126,7 +134,7 @@ class ExamDetailFragment : Fragment() {
     /**
      * Displays an alert dialog to get the user's confirmation before deleting the exam.
      */
-    private fun showConfirmationDialog() {
+    private fun showDeleteConfirmationDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(android.R.string.dialog_alert_title))
             .setMessage(getString(R.string.delete_question))
@@ -138,11 +146,41 @@ class ExamDetailFragment : Fragment() {
             .show()
     }
 
+    private fun showFinishConfirmationDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage(getString(R.string.finish_question))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.no)) { _, _ -> }
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                finishExam()
+            }
+            .show()
+    }
+
+    private fun finishExam(){
+        when(exam.finished){
+            false -> {
+                binding.finishedLabel.visibility = View.VISIBLE
+                exam.finished = true
+            }
+            true -> {
+                binding.finishedLabel.visibility = View.GONE
+                exam.finished = false
+            }
+        }
+
+        viewModel.updateExam(exam)
+    }
+
     /**
      * Deletes the current exam and navigates to the list fragment.
      */
     private fun deleteExam() {
-        timer.cancel()
+        if(timerRunning){
+            timer.cancel()
+            timerRunning = false
+        }
         /*exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
         viewModel.updateExam(exam)*/
         viewModel.deleteExam(exam)
@@ -152,6 +190,7 @@ class ExamDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.examId
+
         // Retrieve the exam details using the examId.
         // Attach an observer on the data (instead of polling for changes) and only update the
         // the UI when the data actually changes.

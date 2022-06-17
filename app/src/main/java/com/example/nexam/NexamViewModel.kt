@@ -47,8 +47,8 @@ class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
     /**
      * Inserts the new exam into database.
      */
-    fun addNewExam(nameOfSubject: String, dateOfExam: String, difficulty: Int, additionalNotes: String) {
-        val newExam = getNewExamEntry(nameOfSubject, dateOfExam, difficulty, additionalNotes)
+    fun addNewExam(nameOfSubject: String, dateOfExam: String, difficulty: Int, additionalNotes: String, finished: Boolean) {
+        val newExam = getNewExamEntry(nameOfSubject, dateOfExam, difficulty, additionalNotes, finished)
         insertExam(newExam)
     }
 
@@ -91,13 +91,14 @@ class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
      * Returns an instance of the [Exam] entity class with the exam info entered by the user.
      * This will be used to add a new entry to the nEXam database.
      */
-    private fun getNewExamEntry(examName: String, dateOfExam: String, difficulty: Int, additionalNotes: String): Exam {
+    private fun getNewExamEntry(examName: String, dateOfExam: String, difficulty: Int, additionalNotes: String, finished: Boolean): Exam {
         return Exam(
             nameOfSubject = examName,
             dateOfExam = dateOfExam,
             difficulty = difficulty,
             remainingTime = (difficulty * 3600000 * 10),
-            additionalNotes = additionalNotes
+            additionalNotes = additionalNotes,
+            finished = finished
         )
     }
 
@@ -119,7 +120,8 @@ class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
             dateOfExam = dateOfExam,
             difficulty = difficulty,
             remainingTime = remainingTime,
-            additionalNotes = addtitionalNotes
+            additionalNotes = addtitionalNotes,
+            finished = false
         )
     }
 }
