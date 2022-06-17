@@ -182,11 +182,13 @@ class ExamDetailFragment : Fragment() {
                 exam.finished = false
             }
         }
-        timer.cancel()
-        timerRunning = false
-        binding.startTimer.isEnabled = true
-        binding.stopTimer.isEnabled = false
-        exam.remainingTime = remainingTime
+        if(timerRunning == true) {
+            timer.cancel()
+            timerRunning = false
+            binding.startTimer.isEnabled = true
+            binding.stopTimer.isEnabled = false
+            exam.remainingTime = remainingTime
+        }
         viewModel.updateExam(exam)
     }
 
