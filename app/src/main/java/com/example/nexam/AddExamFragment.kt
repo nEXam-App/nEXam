@@ -109,13 +109,13 @@ class AddExamFragment : Fragment() {
      */
     private fun updateExam() {
         if (isEntryValid()) {
-            var remainingTime: Int
+            var remainingTime: Long
             val date = binding.date.text.toString()
             val difficulty: Int = Integer.parseInt(binding.difficulty.text.toString())
             val additionalNotes: String = binding.additionalNotes.text.toString()
             when(oldDifficulty.equals(difficulty)){
-                true -> remainingTime = binding.remainingTime.text.toString().toInt()
-                false -> remainingTime = (binding.difficulty.text.toString().toInt() * 3600000 * 10)
+                true -> remainingTime = binding.remainingTime.text.toString().toLong()
+                false -> remainingTime = (binding.difficulty.text.toString().toLong() * 3600000 * 10)
             }
             viewModel.updateExam(
                 this.navigationArgs.examId,
