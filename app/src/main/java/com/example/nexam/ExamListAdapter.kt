@@ -38,7 +38,13 @@ class ExamListAdapter(private val onExamClicked: (Exam) -> Unit) :
 
         fun bind(exam: Exam) {
             binding.examName.text = exam.nameOfSubject
-            binding.date.text = exam.dateOfExam.toString()
+            binding.date.text = exam.dateOfExam
+            if(exam.finished) {
+                binding.finished.text = "Finished"
+            }
+            else{
+                binding.finished.text = ""
+            }
         }
     }
 

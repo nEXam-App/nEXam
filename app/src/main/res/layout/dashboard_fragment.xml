@@ -14,7 +14,7 @@
         android:layout_marginStart="@dimen/margin_between_elements"
         android:text="@string/exam"
         app:layout_constraintEnd_toStartOf="@+id/exam_date"
-        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintHorizontal_weight="2.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,6 +27,17 @@
         android:textAlignment="center"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/exam_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/finished_Label"
+        style="@style/Widget.nEXam.Header"
+        android:layout_below="@+id/exam_date"
+        android:layout_marginStart="70sp"
+        android:text="@string/finished"
+        android:textAlignment="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/exam_date"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
