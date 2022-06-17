@@ -27,9 +27,9 @@ class ExamDetailFragment : Fragment() {
     var time: Long = 0
     lateinit var timer:CountDownTimer
 
-    private val viewModel: nEXamViewModel by activityViewModels {
-        nEXamViewModelFactory(
-            (activity?.application as nEXamApplication).database.ExamDao()
+    private val viewModel: NexamViewModel by activityViewModels {
+        NexamViewModelFactory(
+            (activity?.application as NexamApplication).database.ExamDao()
         )
     }
 

@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -30,9 +29,9 @@ class AddExamFragment : Fragment() {
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
     // to share the ViewModel across fragments.
-    private val viewModel: nEXamViewModel by activityViewModels {
-        nEXamViewModelFactory(
-            (activity?.application as nEXamApplication).database
+    private val viewModel: NexamViewModel by activityViewModels {
+        NexamViewModelFactory(
+            (activity?.application as NexamApplication).database
                 .ExamDao()
         )
     }

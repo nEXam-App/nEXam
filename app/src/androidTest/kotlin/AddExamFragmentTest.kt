@@ -3,7 +3,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.nexam.data.ExamDao
 import com.example.nexam.data.ExamRoomDatabase
-import com.example.nexam.nEXamViewModel
+import com.example.nexam.NexamViewModel
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
@@ -14,7 +14,7 @@ class AddExamFragmentTest {
 
     private lateinit var examDao: ExamDao
     private lateinit var db: ExamRoomDatabase
-    private lateinit var nEXamViewModel: nEXamViewModel
+    private lateinit var NexamViewModel: NexamViewModel
 
     @Before
     fun createDb() {
@@ -22,7 +22,7 @@ class AddExamFragmentTest {
         db = Room.inMemoryDatabaseBuilder(
             context, ExamRoomDatabase::class.java).build()
         examDao = db.ExamDao()
-        nEXamViewModel= nEXamViewModel(examDao)
+        NexamViewModel= NexamViewModel(examDao)
     }
 
     @After
@@ -34,12 +34,12 @@ class AddExamFragmentTest {
     @Test
     fun isValid_ShouldReturnTrue() {
         var subject: String= "Test"
-        Assert.assertTrue(nEXamViewModel.isEntryValid(subject))
+        Assert.assertTrue(NexamViewModel.isEntryValid(subject))
     }
 
     @Test
     fun isNotValid_ShouldReturnFalse(){
         var subject: String=""
-        Assert.assertFalse(nEXamViewModel.isEntryValid(subject))
+        Assert.assertFalse(NexamViewModel.isEntryValid(subject))
     }
 }
