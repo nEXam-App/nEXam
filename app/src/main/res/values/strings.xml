@@ -26,6 +26,6 @@
     <string name="finished">Finished</string>
     <string name="contacts.emptyList">No contacts</string>
     <string name="contacts.title">Contacts</string>
-    <!--<string name="countTimeText">%1$s:%2$s:%3$s</string>-->
+    <string name="countTimeText">%1$s:%2$s:%3$s</string>
     <string name="countTimeFinished">00:00:00</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.example.nexam
 
+import android.icu.text.DecimalFormat
+import android.icu.text.NumberFormat
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -20,6 +22,7 @@ class ExamDetailFragment : Fragment() {
     private val navigationArgs: ExamDetailFragmentArgs by navArgs()
     lateinit var exam: Exam
     var remainingMillis: Long = 0
+    var remainingTime: Long = 0
     lateinit var timer:CountDownTimer
     var timerRunning = false
 
@@ -50,7 +53,6 @@ class ExamDetailFragment : Fragment() {
             examName.text = exam.nameOfSubject
             date.text = exam.dateOfExam
             difficulty.text = exam.difficulty.toString()
-            remainingTime.text = exam.remainingTime.toString()
             additionalNotes.text = exam.additionalNotes
             finishedLabel.text = "Finished"
 
@@ -73,23 +75,12 @@ class ExamDetailFragment : Fragment() {
 
     private fun startTimeCounter() {
         //val countTime: InputTextField = findViewById(R.id.countTime)
-        timer = object : CountDownTimer(binding.remainingTime.text.toString().toLong(), 1000) {
+        timer = object : CountDownTimer(remainingTime, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                remainingMillis = millisUntilFinished
-                binding.remainingTime.setText(remainingMillis.toString())
-                /*val f: NumberFormat = DecimalFormat("00")
-                val hour = millisUntilFinished / 3600000 % 24
-                val min = millisUntilFinished / 60000 % 60
-                val sec = millisUntilFinished / 1000 % 60
-
-                binding.remainingTime.setText(
-                    getString(
-                        R.string.countTimeText,
-                        f.format(hour),
-                        f.format(min),
-                        f.format(sec)
-                    )
-                )*/
+                /*remainingMillis = millisUntilFinished
+                binding.remainingTime.setText(remainingMillis.toString())*/
+                remainingTime = millisUntilFinished
+                setTimerText(remainingTime)
                 //counter++
                 //binding.remainingTime.isEnabled = false
             }
@@ -106,11 +97,28 @@ class ExamDetailFragment : Fragment() {
 
     private fun stopTimeCounter(){
         timer.cancel()
+        setTimerText(remainingTime)
         timerRunning = false
         binding.startTimer.isEnabled = true
         binding.stopTimer.isEnabled = false
-        exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
+        exam.remainingTime = remainingTime.toInt()
         viewModel.updateExam(exam)
+    }
+
+    private fun setTimerText(millisUntilFinished: Long){
+        val f: NumberFormat = DecimalFormat("00")
+        val hour = millisUntilFinished / 3600000 % 24
+        val min = millisUntilFinished / 60000 % 60
+        val sec = millisUntilFinished / 1000 % 60
+
+        binding.remainingTime.setText(
+            getString(
+                R.string.countTimeText,
+                f.format(hour),
+                f.format(min),
+                f.format(sec)
+            )
+        )
     }
 
 
@@ -122,7 +130,7 @@ class ExamDetailFragment : Fragment() {
             timer.cancel()
             timerRunning = false
         }
-        exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
+        exam.remainingTime = remainingTime.toInt()
         viewModel.updateExam(exam)
         val action = ExamDetailFragmentDirections.actionExamDetailFragmentToAddExamFragment(
             getString(R.string.edit_fragment_title),
@@ -181,8 +189,6 @@ class ExamDetailFragment : Fragment() {
             timer.cancel()
             timerRunning = false
         }
-        /*exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
-        viewModel.updateExam(exam)*/
         viewModel.deleteExam(exam)
         findNavController().navigateUp()
     }
@@ -196,6 +202,8 @@ class ExamDetailFragment : Fragment() {
         // the UI when the data actually changes.
         viewModel.retrieveExam(id).observe(this.viewLifecycleOwner) { selectedExam ->
             exam = selectedExam
+            remainingTime = exam.remainingTime.toLong()
+            setTimerText(remainingTime)
             bind(exam)
         }
     }
