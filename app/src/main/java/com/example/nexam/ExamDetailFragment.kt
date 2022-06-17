@@ -58,7 +58,7 @@ class ExamDetailFragment : Fragment() {
 
             startTimer.setOnClickListener{startTimeCounter()}
             stopTimer.setOnClickListener{stopTimeCounter()}
-            deleteExam.setOnClickListener { deleteExam() }
+            deleteExam.setOnClickListener { showConfirmationDialog() }
             editExam.setOnClickListener { editExam() }
         }
     }
