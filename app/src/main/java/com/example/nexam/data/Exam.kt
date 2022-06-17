@@ -21,5 +21,7 @@ data class Exam(
     @ColumnInfo(name = "remainingTime")
     var remainingTime: Int,
     @ColumnInfo(name = "additionalNotes")
-    var additionalNotes: String
+    var additionalNotes: String,
+    @ColumnInfo(name = "finished")
+    var finished: Boolean
 )

@@ -90,12 +90,14 @@ class AddExamFragment : Fragment() {
             difficulty = 5
         }
         val additionalNotes: String = binding.additionalNotes.text.toString()
+        val finished = false
         if (isEntryValid()) {
             viewModel.addNewExam(
                 binding.examName.text.toString(),
                 date,
                 difficulty,
-                additionalNotes
+                additionalNotes,
+                finished
             )
             val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
