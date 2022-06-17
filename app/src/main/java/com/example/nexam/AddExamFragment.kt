@@ -3,6 +3,7 @@ package com.example.nexam
 import android.app.DatePickerDialog
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,7 @@ class AddExamFragment : Fragment() {
     private val navigationArgs: ExamDetailFragmentArgs by navArgs()
 
     lateinit var exam: Exam
+    var oldDifficulty: Int = 0
 
     // Binding object instance corresponding to the fragment_add_exam.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
@@ -100,13 +102,19 @@ class AddExamFragment : Fragment() {
      */
     private fun updateExam() {
         if (isEntryValid()) {
+            var remainingTime: Int
             val date = binding.date.text.toString()
             val difficulty: Int = Integer.parseInt(binding.difficulty.text.toString())
+            when(oldDifficulty.equals(difficulty)){
+                true -> remainingTime = binding.remainingTime.text.toString().toInt()
+                false -> remainingTime = (binding.difficulty.text.toString().toInt() * 3600000 * 10)
+            }
             viewModel.updateExam(
                 this.navigationArgs.examId,
                 this.binding.examName.text.toString(),
                 date,
-                difficulty
+                difficulty,
+                remainingTime
             )
             val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
@@ -127,6 +135,7 @@ class AddExamFragment : Fragment() {
             viewModel.retrieveExam(id).observe(this.viewLifecycleOwner) { selectedExam ->
                 exam = selectedExam
                 bind(exam)
+                oldDifficulty = exam.difficulty
             }
         } else {
             binding.saveAction.setOnClickListener {
