@@ -52,9 +52,10 @@ class ExamDetailFragment : Fragment() {
     private fun bind(exam: Exam) {
         binding.apply {
             examName.text = exam.nameOfSubject
-            date.text = exam.dateOfExam.toString()
+            date.text = exam.dateOfExam
             difficulty.text = exam.difficulty.toString()
             remainingTime.text = exam.remainingTime.toString()
+            additionalNotes.text = exam.additionalNotes
 
             startTimer.setOnClickListener{startTimeCounter()}
             stopTimer.setOnClickListener{stopTimeCounter()}

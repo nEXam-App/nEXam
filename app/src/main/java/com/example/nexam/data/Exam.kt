@@ -19,5 +19,7 @@ data class Exam(
     @ColumnInfo(name = "difficulty")
     val difficulty: Int,
     @ColumnInfo(name = "remainingTime")
-    var remainingTime: Int
+    var remainingTime: Int,
+    @ColumnInfo(name = "additionalNotes")
+    var additionalNotes: String
 )
