@@ -72,6 +72,8 @@ class AddExamFragment : Fragment() {
         binding.apply {
             examName.setText(exam.nameOfSubject, TextView.BufferType.SPANNABLE)
             date.setText(exam.dateOfExam.toString(), TextView.BufferType.SPANNABLE)
+            difficulty.setText(exam.difficulty.toString(), TextView.BufferType.SPANNABLE)
+            remainingTime.setText(exam.remainingTime.toString(), TextView.BufferType.SPANNABLE)
             saveAction.setOnClickListener { updateExam() }
         }
     }
