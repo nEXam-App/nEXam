@@ -14,10 +14,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
-@RunWith(Parameterized::class)
+//@RunWith(Parameterized::class)
 class ContactListFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scenarioConfig) {
 
-    @Rule @JvmField
+    //TODO REMOVE IF NOT NEEDED ANYMORE
+
+   /* @Rule @JvmField
     val activity = ActivityTestRule(MainActivity::class.java, true, true)
 
     @Test
@@ -38,6 +40,6 @@ class ContactListFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(
                 .takeScreenshotOnFail()
                 .scenarios(TestSuite.ENGLISH, TestSuite.SPANISH)
         }
-    }
+    }*/
 }
 

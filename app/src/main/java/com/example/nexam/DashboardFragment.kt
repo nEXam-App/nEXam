@@ -14,9 +14,9 @@ import com.example.nexam.databinding.DashboardFragmentBinding
  * Main fragment displaying details for all exams in the database.
  */
 class DashboardFragment : Fragment() {
-    private val viewModel: nEXamViewModel by activityViewModels {
-        nEXamViewModelFactory(
-            (activity?.application as nEXamApplication).database.ExamDao()
+    private val viewModel: NexamViewModel by activityViewModels {
+        NexamViewModelFactory(
+            (activity?.application as NexamApplication).database.ExamDao()
         )
     }
 
