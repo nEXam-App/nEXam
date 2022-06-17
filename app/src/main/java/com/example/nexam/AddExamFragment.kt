@@ -87,12 +87,14 @@ class AddExamFragment : Fragment() {
         val date = binding.date.text.toString()
         val difficulty: Int = Integer.parseInt(binding.difficulty.text.toString())
         val additionalNotes: String = binding.additionalNotes.text.toString()
+        val finished = false
         if (isEntryValid()) {
             viewModel.addNewExam(
                 binding.examName.text.toString(),
                 date,
                 difficulty,
-                additionalNotes
+                additionalNotes,
+                finished
             )
             val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)

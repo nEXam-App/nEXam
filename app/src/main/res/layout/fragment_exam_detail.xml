@@ -17,6 +17,17 @@
         tools:text="Subject" />
 
     <TextView
+        android:id="@+id/finished_Label"
+        style="@style/Widget.nEXam.TextView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exam_name"
+        tools:text="Finished"
+        android:textColor="?android:colorPrimary"
+        android:textSize="32sp"/>
+
+    <TextView
         android:id="@+id/date"
         style="@style/Widget.nEXam.TextView"
         android:layout_width="wrap_content"
@@ -72,6 +83,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/startTimer" />
+
+    <Button
+        android:id="@+id/finishExam"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/finishExam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stopTimer" />
+
     <Button
         android:id="@+id/delete_exam"
         style="?attr/materialButtonOutlinedStyle"
@@ -81,7 +103,7 @@
         android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/stopTimer" />
+        app:layout_constraintTop_toBottomOf="@id/finishExam" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/edit_exam"

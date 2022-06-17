@@ -14,10 +14,10 @@
     <string name="exam">Exam</string>
     <string name="delete">Delete</string>
     <string name="delete_question">Are you sure you want to delete?</string>
+    <string name="finish_question">Are you sure you want to finish/unfinish?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="currency_symbol">$</string>
-
     <string name="edit_exam">Edit Exam</string>
     <string name="pick_date">Pick Date</string>
     <string name="add_new_exam">Add new exam</string>
@@ -26,6 +26,7 @@
     <string name="startTimer">Start Timer</string>
     <string name="stopTimer">Stop Timer</string>
     <string name="additionalNotes">additional Notes</string>
+    <string name="finishExam">Finish/Unfinish Exam</string>
     <string name="contacts.emptyList">No contacts</string>
     <string name="contacts.title">Contacts</string>
     <!--<string name="countTimeText">%1$s:%2$s:%3$s</string>-->
