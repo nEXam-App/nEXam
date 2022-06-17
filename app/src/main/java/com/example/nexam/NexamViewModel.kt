@@ -27,7 +27,7 @@ class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
         nameOfSubject: String,
         dateOfExam: String,
         difficulty: Int,
-        remainingTime: Int,
+        remainingTime: Long,
         additionalNotes: String
     ) {
         val updatedExam = getUpdatedExamEntry(examId, nameOfSubject, dateOfExam, difficulty, remainingTime,additionalNotes)
@@ -96,7 +96,7 @@ class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
             nameOfSubject = examName,
             dateOfExam = dateOfExam,
             difficulty = difficulty,
-            remainingTime = (difficulty * 3600000 * 10),
+            remainingTime = (difficulty * 3600000 * 10).toLong(),
             additionalNotes = additionalNotes,
             finished = finished
         )
@@ -111,7 +111,7 @@ class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
         examName: String,
         dateOfExam: String,
         difficulty: Int,
-        remainingTime: Int,
+        remainingTime: Long,
         addtitionalNotes: String
     ): Exam {
         return Exam(

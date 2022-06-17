@@ -4,6 +4,7 @@ import android.icu.text.DecimalFormat
 import android.icu.text.NumberFormat
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class ExamDetailFragment : Fragment() {
     private val navigationArgs: ExamDetailFragmentArgs by navArgs()
     lateinit var exam: Exam
-    var remainingMillis: Long = 0
+    //var remainingMillis: Long = 0
     var remainingTime: Long = 0
     lateinit var timer:CountDownTimer
     var timerRunning = false
@@ -101,13 +102,13 @@ class ExamDetailFragment : Fragment() {
         timerRunning = false
         binding.startTimer.isEnabled = true
         binding.stopTimer.isEnabled = false
-        exam.remainingTime = remainingTime.toInt()
+        exam.remainingTime = remainingTime
         viewModel.updateExam(exam)
     }
 
     private fun setTimerText(millisUntilFinished: Long){
         val f: NumberFormat = DecimalFormat("00")
-        val hour = millisUntilFinished / 3600000 % 24
+        val hour = millisUntilFinished / 3600000
         val min = millisUntilFinished / 60000 % 60
         val sec = millisUntilFinished / 1000 % 60
 
@@ -130,7 +131,7 @@ class ExamDetailFragment : Fragment() {
             timer.cancel()
             timerRunning = false
         }
-        exam.remainingTime = remainingTime.toInt()
+        exam.remainingTime = remainingTime
         viewModel.updateExam(exam)
         val action = ExamDetailFragmentDirections.actionExamDetailFragmentToAddExamFragment(
             getString(R.string.edit_fragment_title),
@@ -202,7 +203,8 @@ class ExamDetailFragment : Fragment() {
         // the UI when the data actually changes.
         viewModel.retrieveExam(id).observe(this.viewLifecycleOwner) { selectedExam ->
             exam = selectedExam
-            remainingTime = exam.remainingTime.toLong()
+            Log.i("getmillis", remainingTime.toString())
+            remainingTime = exam.remainingTime
             setTimerText(remainingTime)
             bind(exam)
         }
