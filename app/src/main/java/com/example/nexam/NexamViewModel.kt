@@ -26,9 +26,10 @@ class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
         examId: Int,
         nameOfSubject: String,
         dateOfExam: String,
-        difficulty: Int
+        difficulty: Int,
+        remainingTime: Int
     ) {
-        val updatedExam = getUpdatedExamEntry(examId, nameOfSubject, dateOfExam, difficulty)
+        val updatedExam = getUpdatedExamEntry(examId, nameOfSubject, dateOfExam, difficulty, remainingTime)
         updateExam(updatedExam)
     }
 
@@ -36,7 +37,7 @@ class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
     /**
      * Launching a new coroutine to update an exam in a non-blocking way
      */
-    private fun updateExam(exam: Exam) {
+    fun updateExam(exam: Exam) {
         viewModelScope.launch {
             examDao.update(exam)
         }
@@ -106,14 +107,15 @@ class NexamViewModel(private val examDao: ExamDao) : ViewModel() {
         examId: Int,
         examName: String,
         dateOfExam: String,
-        difficulty: Int
+        difficulty: Int,
+        remainingTime: Int
     ): Exam {
         return Exam(
             id = examId,
             nameOfSubject = examName,
             dateOfExam = dateOfExam,
             difficulty = difficulty,
-            remainingTime = (difficulty * 3600000 * 10)
+            remainingTime = remainingTime
         )
     }
 }
