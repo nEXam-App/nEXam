@@ -1,6 +1,9 @@
 package com.example.nexam
 
+import android.icu.text.DecimalFormat
+import android.icu.text.NumberFormat
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +21,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class ExamDetailFragment : Fragment() {
     private val navigationArgs: ExamDetailFragmentArgs by navArgs()
     lateinit var exam: Exam
+    var counter = 0
+    var runningTimer = false
+    var remainingMillis: Long = 0
+    var time: Long = 0
+    lateinit var timer:CountDownTimer
 
     private val viewModel: NexamViewModel by activityViewModels {
         NexamViewModelFactory(
@@ -34,6 +42,7 @@ class ExamDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentExamDetailBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -44,11 +53,53 @@ class ExamDetailFragment : Fragment() {
         binding.apply {
             examName.text = exam.nameOfSubject
             date.text = exam.dateOfExam.toString()
+            difficulty.text = exam.difficulty.toString()
+            remainingTime.text = exam.remainingTime.toString()
 
+            startTimer.setOnClickListener{startTimeCounter()}
+            stopTimer.setOnClickListener{stopTimeCounter()}
             deleteExam.setOnClickListener { showConfirmationDialog() }
             editExam.setOnClickListener { editExam() }
         }
     }
+
+
+    private fun startTimeCounter() {
+        //val countTime: InputTextField = findViewById(R.id.countTime)
+        timer = object : CountDownTimer(binding.remainingTime.text.toString().toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                remainingMillis = millisUntilFinished
+                binding.remainingTime.setText(remainingMillis.toString())
+                /*val f: NumberFormat = DecimalFormat("00")
+                val hour = millisUntilFinished / 3600000 % 24
+                val min = millisUntilFinished / 60000 % 60
+                val sec = millisUntilFinished / 1000 % 60
+
+                binding.remainingTime.setText(
+                    getString(
+                        R.string.countTimeText,
+                        f.format(hour),
+                        f.format(min),
+                        f.format(sec)
+                    )
+                )*/
+                //counter++
+                binding.remainingTime.isEnabled = false
+            }
+
+            override fun onFinish() {
+                binding.remainingTime.setText(getString(R.string.countTimeFinished))
+                binding.remainingTime.isEnabled = true
+            }
+        }.start()
+    }
+
+    private fun stopTimeCounter(){
+        timer.cancel()
+        exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
+        viewModel.updateExam(exam)
+    }
+
 
     /**
      * Navigate to the Edit exam screen.

@@ -21,7 +21,12 @@
     <string name="edit_exam">Edit Exam</string>
     <string name="pick_date">Pick Date</string>
     <string name="add_new_exam">Add new exam</string>
-
+    <string name="difficulty">Difficulty</string>
+    <string name="remainingTime">Remaining Time</string>
+    <string name="startTimer">Start Timer</string>
+    <string name="stopTimer">Stop Timer</string>
     <string name="contacts.emptyList">No contacts</string>
     <string name="contacts.title">Contacts</string>
+    <!--<string name="countTimeText">%1$s:%2$s:%3$s</string>-->
+    <string name="countTimeFinished">00:00:00</string>
 </resources>

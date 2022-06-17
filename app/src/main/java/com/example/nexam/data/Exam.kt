@@ -16,4 +16,8 @@ data class Exam(
     val nameOfSubject: String,
     @ColumnInfo(name = "date")
     val dateOfExam: String,
+    @ColumnInfo(name = "difficulty")
+    val difficulty: Int,
+    @ColumnInfo(name = "remainingTime")
+    var remainingTime: Int
 )
