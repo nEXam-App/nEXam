@@ -4,6 +4,7 @@ import android.icu.text.DecimalFormat
 import android.icu.text.NumberFormat
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,8 +58,10 @@ class ExamDetailFragment : Fragment() {
             remainingTime.text = exam.remainingTime.toString()
             additionalNotes.text = exam.additionalNotes
 
-            startTimer.setOnClickListener{startTimeCounter()}
-            stopTimer.setOnClickListener{stopTimeCounter()}
+
+            startTimer.setOnClickListener { startTimeCounter()}
+            stopTimer.setOnClickListener { stopTimeCounter()}
+            stopTimer.isEnabled = false
             deleteExam.setOnClickListener { showConfirmationDialog() }
             editExam.setOnClickListener { editExam() }
         }
@@ -85,18 +88,22 @@ class ExamDetailFragment : Fragment() {
                     )
                 )*/
                 //counter++
-                binding.remainingTime.isEnabled = false
+                //binding.remainingTime.isEnabled = false
             }
 
             override fun onFinish() {
                 binding.remainingTime.setText(getString(R.string.countTimeFinished))
-                binding.remainingTime.isEnabled = true
+                //binding.remainingTime.isEnabled = true
             }
         }.start()
+        binding.startTimer.isEnabled = false
+        binding.stopTimer.isEnabled = true
     }
 
     private fun stopTimeCounter(){
         timer.cancel()
+        binding.startTimer.isEnabled = true
+        binding.stopTimer.isEnabled = false
         exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
         viewModel.updateExam(exam)
     }
@@ -106,6 +113,9 @@ class ExamDetailFragment : Fragment() {
      * Navigate to the Edit exam screen.
      */
     private fun editExam() {
+        timer.cancel()
+        exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
+        viewModel.updateExam(exam)
         val action = ExamDetailFragmentDirections.actionExamDetailFragmentToAddExamFragment(
             getString(R.string.edit_fragment_title),
             exam.id
@@ -132,6 +142,9 @@ class ExamDetailFragment : Fragment() {
      * Deletes the current exam and navigates to the list fragment.
      */
     private fun deleteExam() {
+        timer.cancel()
+        /*exam.remainingTime = Integer.parseInt(binding.remainingTime.text.toString())
+        viewModel.updateExam(exam)*/
         viewModel.deleteExam(exam)
         findNavController().navigateUp()
     }
