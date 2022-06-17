@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">nEXam</string>
-    <string name="sell">Sell</string>
-    <string name="quantity">Quantity in Stock:</string>
-    <string name="quantity_req">Quantity in Stock <font color='#FF0000'>*</font></string>
     <string name="subject_req">Subject <font color='#FF0000'>*</font></string>
     <string name="save_action">Save</string>
     <string name="pick_date_action">Pick Date</string>
@@ -10,7 +7,6 @@
     <string name="add_fragment_title">Add Exam</string>
     <string name="edit_fragment_title">Edit Exam</string>
     <string name="date">Date</string>
-    <string name="quantity_in_stock">Quantity\nIn Stock</string>
     <string name="exam">Exam</string>
     <string name="delete">Delete</string>
     <string name="delete_question">Are you sure you want to delete?</string>
@@ -21,7 +17,7 @@
     <string name="edit_exam">Edit Exam</string>
     <string name="pick_date">Pick Date</string>
     <string name="add_new_exam">Add new exam</string>
-    <string name="difficulty">Difficulty</string>
+    <string name="difficulty">Difficulty (1-5) <font color='#FF0000'>*</font></string>
     <string name="remainingTime">Remaining Time</string>
     <string name="startTimer">Start Timer</string>
     <string name="stopTimer">Stop Timer</string>
