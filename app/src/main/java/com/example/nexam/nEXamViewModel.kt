@@ -28,9 +28,10 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
         nameOfSubject: String,
         dateOfExam: String,
         difficulty: Int,
-        remainingTime: Int
+        remainingTime: Int,
+        additionalNotes: String
     ) {
-        val updatedExam = getUpdatedExamEntry(examId, nameOfSubject, dateOfExam, difficulty, remainingTime)
+        val updatedExam = getUpdatedExamEntry(examId, nameOfSubject, dateOfExam, difficulty, remainingTime,additionalNotes)
         updateExam(updatedExam)
     }
 
@@ -47,8 +48,8 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
     /**
      * Inserts the new exam into database.
      */
-    fun addNewExam(nameOfSubject: String, dateOfExam: String, difficulty: Int) {
-        val newExam = getNewExamEntry(nameOfSubject, dateOfExam, difficulty)
+    fun addNewExam(nameOfSubject: String, dateOfExam: String, difficulty: Int, additionalNotes: String) {
+        val newExam = getNewExamEntry(nameOfSubject, dateOfExam, difficulty, additionalNotes)
         insertExam(newExam)
     }
 
@@ -91,12 +92,13 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
      * Returns an instance of the [Exam] entity class with the exam info entered by the user.
      * This will be used to add a new entry to the nEXam database.
      */
-    private fun getNewExamEntry(examName: String, dateOfExam: String, difficulty: Int): Exam {
+    private fun getNewExamEntry(examName: String, dateOfExam: String, difficulty: Int, additionalNotes: String): Exam {
         return Exam(
             nameOfSubject = examName,
             dateOfExam = dateOfExam,
             difficulty = difficulty,
-            remainingTime = (difficulty * 3600000 * 10)
+            remainingTime = (difficulty * 3600000 * 10),
+            additionalNotes = additionalNotes
         )
     }
 
@@ -109,14 +111,16 @@ class nEXamViewModel(private val examDao: ExamDao) : ViewModel() {
         examName: String,
         dateOfExam: String,
         difficulty: Int,
-        remainingTime: Int
+        remainingTime: Int,
+        addtitionalNotes: String
     ): Exam {
         return Exam(
             id = examId,
             nameOfSubject = examName,
             dateOfExam = dateOfExam,
             difficulty = difficulty,
-            remainingTime = remainingTime
+            remainingTime = remainingTime,
+            additionalNotes = addtitionalNotes
         )
     }
 }

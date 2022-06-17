@@ -76,6 +76,7 @@ class AddExamFragment : Fragment() {
             date.setText(exam.dateOfExam.toString(), TextView.BufferType.SPANNABLE)
             difficulty.setText(exam.difficulty.toString(), TextView.BufferType.SPANNABLE)
             remainingTime.setText(exam.remainingTime.toString(), TextView.BufferType.SPANNABLE)
+            additionalNotes.setText(exam.additionalNotes, TextView.BufferType.SPANNABLE)
             saveAction.setOnClickListener { updateExam() }
         }
     }
@@ -86,11 +87,13 @@ class AddExamFragment : Fragment() {
     private fun addNewExam() {
         val date = binding.date.text.toString()
         val difficulty: Int = Integer.parseInt(binding.difficulty.text.toString())
+        val additionalNotes: String = binding.additionalNotes.text.toString()
         if (isEntryValid()) {
             viewModel.addNewExam(
                 binding.examName.text.toString(),
                 date,
-                difficulty
+                difficulty,
+                additionalNotes
             )
             val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
@@ -105,6 +108,7 @@ class AddExamFragment : Fragment() {
             var remainingTime: Int
             val date = binding.date.text.toString()
             val difficulty: Int = Integer.parseInt(binding.difficulty.text.toString())
+            val additionalNotes: String = binding.additionalNotes.text.toString()
             when(oldDifficulty.equals(difficulty)){
                 true -> remainingTime = binding.remainingTime.text.toString().toInt()
                 false -> remainingTime = (binding.difficulty.text.toString().toInt() * 3600000 * 10)
@@ -114,7 +118,8 @@ class AddExamFragment : Fragment() {
                 this.binding.examName.text.toString(),
                 date,
                 difficulty,
-                remainingTime
+                remainingTime,
+                additionalNotes
             )
             val action = AddExamFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
