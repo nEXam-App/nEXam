@@ -27,6 +27,7 @@
     <string name="stopTimer">Stop Timer</string>
     <string name="additionalNotes">additional Notes</string>
     <string name="finishExam">Finish/Unfinish Exam</string>
+    <string name="finished">Finished</string>
     <string name="contacts.emptyList">No contacts</string>
     <string name="contacts.title">Contacts</string>
     <!--<string name="countTimeText">%1$s:%2$s:%3$s</string>-->
