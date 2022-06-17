@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -91,6 +92,9 @@ class ExamDetailFragment : Fragment() {
                 //binding.remainingTime.isEnabled = true
             }
         }.start()
+        val message = "timer started"
+        var toast = Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
+        toast.show()
         timerRunning = true
         binding.startTimer.isEnabled = false
         binding.stopTimer.isEnabled = true
@@ -178,7 +182,11 @@ class ExamDetailFragment : Fragment() {
                 exam.finished = false
             }
         }
-
+        timer.cancel()
+        timerRunning = false
+        binding.startTimer.isEnabled = true
+        binding.stopTimer.isEnabled = false
+        exam.remainingTime = remainingTime
         viewModel.updateExam(exam)
     }
 
