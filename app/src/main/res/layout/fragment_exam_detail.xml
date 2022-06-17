@@ -21,11 +21,11 @@
         style="@style/Widget.nEXam.TextView"
         android:layout_width="wrap_content"
         android:layout_marginTop="@dimen/margin"
+        android:textColor="?android:colorPrimary"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exam_name"
-        tools:text="Finished"
-        android:textColor="?android:colorPrimary"
-        android:textSize="32sp"/>
+        tools:text="Finished" />
 
     <TextView
         android:id="@+id/date"
@@ -54,16 +54,23 @@
         app:layout_constraintTop_toBottomOf="@+id/difficulty"
         tools:text="Remaining Time" />
 
-    <TextView
-        android:id="@+id/additionalNotes"
-        style="@style/Widget.nEXam.TextView"
+    <ScrollView
+        android:id="@+id/additionalNotes_ScrollView"
         android:layout_width="match_parent"
-        android:layout_height="500px"
+        android:layout_height="400px"
         android:layout_marginTop="@dimen/margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remainingTime"
-        tools:text="additional Notes" />
+        app:layout_constraintTop_toBottomOf="@+id/remainingTime">
+
+        <TextView
+            android:id="@+id/additionalNotes"
+            style="@style/Widget.nEXam.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="additional Notes" />
+    </ScrollView>
 
     <Button
         android:id="@+id/startTimer"
@@ -73,7 +80,8 @@
         android:text="@string/startTimer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additionalNotes" />
+        app:layout_constraintTop_toBottomOf="@id/additionalNotes_ScrollView" />
+
     <Button
         android:id="@+id/stopTimer"
         android:layout_width="0dp"
