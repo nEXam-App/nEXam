@@ -85,7 +85,10 @@ class AddExamFragment : Fragment() {
      */
     private fun addNewExam() {
         val date = binding.date.text.toString()
-        val difficulty: Int = Integer.parseInt(binding.difficulty.text.toString())
+        var difficulty: Int = Integer.parseInt(binding.difficulty.text.toString())
+        if(difficulty > 5){
+            difficulty = 5
+        }
         val additionalNotes: String = binding.additionalNotes.text.toString()
         val finished = false
         if (isEntryValid()) {
