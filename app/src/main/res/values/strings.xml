@@ -10,7 +10,7 @@
     <string name="exam">Exam</string>
     <string name="delete">Delete</string>
     <string name="delete_question">Are you sure you want to delete?</string>
-    <string name="finish_question">Are you sure you want to finish/unfinish?</string>
+    <string name="finish_question">Are you sure you want to finish?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="currency_symbol">$</string>

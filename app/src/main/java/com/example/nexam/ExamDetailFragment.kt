@@ -23,9 +23,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class ExamDetailFragment : Fragment() {
     private val navigationArgs: ExamDetailFragmentArgs by navArgs()
     lateinit var exam: Exam
+
     //var remainingMillis: Long = 0
     var remainingTime: Long = 0
-    lateinit var timer:CountDownTimer
+    lateinit var timer: CountDownTimer
     var timerRunning = false
 
     private val viewModel: NexamViewModel by activityViewModels {
@@ -57,20 +58,23 @@ class ExamDetailFragment : Fragment() {
             difficulty.text = exam.difficulty.toString()
             additionalNotes.text = exam.additionalNotes
             finishedLabel.text = "Finished"
+            switchFinished.isChecked = exam.finished
 
-            if(exam.finished) {
+            if (exam.finished) {
                 finishedLabel.visibility = View.VISIBLE
-            }
-            else{
+            } else {
                 finishedLabel.visibility = View.GONE
             }
 
-            startTimer.setOnClickListener { startTimeCounter()}
-            stopTimer.setOnClickListener { stopTimeCounter()}
+            startTimer.setOnClickListener { startTimeCounter() }
+            stopTimer.setOnClickListener { stopTimeCounter() }
             stopTimer.isEnabled = false
             deleteExam.setOnClickListener { showDeleteConfirmationDialog() }
             editExam.setOnClickListener { editExam() }
-            finishExam.setOnClickListener { showFinishConfirmationDialog()}
+            switchFinished.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) showFinishConfirmationDialog() else finishedLabel.visibility =
+                    View.GONE
+            }
         }
     }
 
@@ -100,7 +104,7 @@ class ExamDetailFragment : Fragment() {
         binding.stopTimer.isEnabled = true
     }
 
-    private fun stopTimeCounter(){
+    private fun stopTimeCounter() {
         timer.cancel()
         setTimerText(remainingTime)
         timerRunning = false
@@ -110,7 +114,7 @@ class ExamDetailFragment : Fragment() {
         viewModel.updateExam(exam)
     }
 
-    private fun setTimerText(millisUntilFinished: Long){
+    private fun setTimerText(millisUntilFinished: Long) {
         val f: NumberFormat = DecimalFormat("00")
         val hour = millisUntilFinished / 3600000
         val min = millisUntilFinished / 60000 % 60
@@ -131,7 +135,7 @@ class ExamDetailFragment : Fragment() {
      * Navigate to the Edit exam screen.
      */
     private fun editExam() {
-        if(timerRunning){
+        if (timerRunning) {
             timer.cancel()
             timerRunning = false
         }
@@ -164,31 +168,24 @@ class ExamDetailFragment : Fragment() {
             .setTitle(getString(android.R.string.dialog_alert_title))
             .setMessage(getString(R.string.finish_question))
             .setCancelable(false)
-            .setNegativeButton(getString(R.string.no)) { _, _ -> }
+            .setNegativeButton(getString(R.string.no)) { _, _ ->
+                binding.switchFinished.isChecked = false
+            }
             .setPositiveButton(getString(R.string.yes)) { _, _ ->
                 finishExam()
             }
             .show()
     }
 
-    private fun finishExam(){
-        when(exam.finished){
-            false -> {
-                binding.finishedLabel.visibility = View.VISIBLE
-                exam.finished = true
-            }
-            true -> {
-                binding.finishedLabel.visibility = View.GONE
-                exam.finished = false
-            }
-        }
-        if(timerRunning == true) {
-            timer.cancel()
-            timerRunning = false
-            binding.startTimer.isEnabled = true
-            binding.stopTimer.isEnabled = false
-            exam.remainingTime = remainingTime
-        }
+    private fun finishExam() {
+        binding.finishedLabel.visibility = View.VISIBLE
+        exam.finished = true
+        timer.cancel()
+        timerRunning = false
+        binding.startTimer.isEnabled = true
+        binding.stopTimer.isEnabled = false
+        exam.remainingTime = remainingTime
+
         viewModel.updateExam(exam)
     }
 
@@ -196,7 +193,7 @@ class ExamDetailFragment : Fragment() {
      * Deletes the current exam and navigates to the list fragment.
      */
     private fun deleteExam() {
-        if(timerRunning){
+        if (timerRunning) {
             timer.cancel()
             timerRunning = false
         }
