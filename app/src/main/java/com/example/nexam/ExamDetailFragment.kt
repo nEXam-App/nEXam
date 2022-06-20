@@ -185,6 +185,7 @@ class ExamDetailFragment : Fragment() {
         binding.startTimer.isEnabled = true
         binding.stopTimer.isEnabled = false
         exam.remainingTime = remainingTime
+
         viewModel.updateExam(exam)
     }
 
