@@ -37,7 +37,7 @@ class SimpleEntityReadWriteTest {
     @Test
     @Throws(Exception::class)
     fun addAndReadExam() = runBlocking{
-        val exam: Exam = Exam( 1, "Mathe", "2022-06-14")
+        val exam: Exam = Exam( 1, "Mathe", "2022-06-14", 1, 36000000, "", false)
         examDao.insert(exam)
         val byId = examDao.getExam(1)
         assertThat(byId.firstOrNull(), equalTo(exam) )
@@ -45,9 +45,9 @@ class SimpleEntityReadWriteTest {
     @Test
     @Throws(Exception::class)
     fun updateExam() = runBlocking {
-        val exam: Exam = Exam( 1, "Mathe", "2022-06-14")
+        val exam: Exam = Exam( 1, "Mathe", "2022-06-14", 1, 36000000, "", false)
         examDao.insert(exam)
-        val examUpdated: Exam = Exam(1, "Mathe", "2022-07-01")
+        val examUpdated: Exam = Exam(1, "Mathe", "2022-07-01", 1, 36000000, "", false)
         examDao.update(examUpdated)
         val byId = examDao.getExam(1)
         assertThat(byId.firstOrNull(), equalTo(examUpdated) )
@@ -55,7 +55,7 @@ class SimpleEntityReadWriteTest {
     @Test
     @Throws(Exception::class)
     fun deleteExam() = runBlocking{
-        val exam: Exam = Exam( 1, "Mathe", "2022-06-14")
+        val exam: Exam = Exam( 1, "Mathe", "2022-06-14", 1, 36000000, "", false)
         examDao.insert(exam)
         examDao.delete(exam)
         val byId = examDao.getExam(1)

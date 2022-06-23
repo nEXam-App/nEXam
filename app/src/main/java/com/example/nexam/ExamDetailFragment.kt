@@ -68,40 +68,40 @@ class ExamDetailFragment : Fragment() {
 
             startTimer.setOnClickListener { startTimeCounter() }
             stopTimer.setOnClickListener { stopTimeCounter() }
-            stopTimer.isEnabled = false
+            if(!timerRunning) {
+                stopTimer.isEnabled = false
+            }
             deleteExam.setOnClickListener { showDeleteConfirmationDialog() }
             editExam.setOnClickListener { editExam() }
             switchFinished.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) showFinishConfirmationDialog() else finishedLabel.visibility =
-                    View.GONE
+                if (isChecked) showFinishConfirmationDialog() else unfinishExam()
             }
         }
     }
 
 
     private fun startTimeCounter() {
-        //val countTime: InputTextField = findViewById(R.id.countTime)
-        timer = object : CountDownTimer(remainingTime, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                /*remainingMillis = millisUntilFinished
-                binding.remainingTime.setText(remainingMillis.toString())*/
-                remainingTime = millisUntilFinished
-                setTimerText(remainingTime)
-                //counter++
-                //binding.remainingTime.isEnabled = false
-            }
-
-            override fun onFinish() {
-                binding.remainingTime.setText(getString(R.string.countTimeFinished))
-                //binding.remainingTime.isEnabled = true
-            }
-        }.start()
+        initTimer()
+        timer.start()
         val message = "timer started"
         var toast = Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
         toast.show()
         timerRunning = true
         binding.startTimer.isEnabled = false
         binding.stopTimer.isEnabled = true
+    }
+
+    private fun initTimer(){
+        timer = object : CountDownTimer(remainingTime, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                remainingTime = millisUntilFinished
+                setTimerText(remainingTime)
+            }
+
+            override fun onFinish() {
+                binding.remainingTime.setText(getString(R.string.countTimeFinished))
+            }
+        }
     }
 
     private fun stopTimeCounter() {
@@ -180,12 +180,21 @@ class ExamDetailFragment : Fragment() {
     private fun finishExam() {
         binding.finishedLabel.visibility = View.VISIBLE
         exam.finished = true
+        initTimer()
+
         timer.cancel()
         timerRunning = false
         binding.startTimer.isEnabled = true
         binding.stopTimer.isEnabled = false
         exam.remainingTime = remainingTime
 
+
+        viewModel.updateExam(exam)
+    }
+
+    private fun unfinishExam(){
+        binding.finishedLabel.visibility = View.GONE
+        exam.finished = false
         viewModel.updateExam(exam)
     }
 
@@ -204,13 +213,16 @@ class ExamDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.examId
+        if(timerRunning == true){
+            binding.startTimer.isEnabled = false
+            binding.stopTimer.isEnabled = true
+        }
 
         // Retrieve the exam details using the examId.
         // Attach an observer on the data (instead of polling for changes) and only update the
         // the UI when the data actually changes.
         viewModel.retrieveExam(id).observe(this.viewLifecycleOwner) { selectedExam ->
             exam = selectedExam
-            Log.i("getmillis", remainingTime.toString())
             remainingTime = exam.remainingTime
             setTimerText(remainingTime)
             bind(exam)
