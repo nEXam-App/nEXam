@@ -80,7 +80,7 @@
             android:hint="@string/remainingTime"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/difficulty_label">
+            app:layout_constraintTop_toBottomOf="@+id/save_action">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/remainingTime"
@@ -101,7 +101,7 @@
             android:hint="@string/additionalNotes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/remainingTime_label">
+            app:layout_constraintTop_toBottomOf="@id/difficulty_label">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/additionalNotes"

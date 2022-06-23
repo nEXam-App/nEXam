@@ -76,6 +76,7 @@ class AddExamFragment : Fragment() {
             difficulty.setText(exam.difficulty.toString(), TextView.BufferType.SPANNABLE)
             remainingTime.setText(exam.remainingTime.toString(), TextView.BufferType.SPANNABLE)
             additionalNotes.setText(exam.additionalNotes, TextView.BufferType.SPANNABLE)
+            remainingTimeLabel.visibility = View.GONE
             saveAction.setOnClickListener { updateExam() }
         }
     }
