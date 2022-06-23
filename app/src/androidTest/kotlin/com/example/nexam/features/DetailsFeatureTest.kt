@@ -1,19 +1,7 @@
 package com.example.nexam.features
 
-import androidx.test.rule.ActivityTestRule
-import com.example.nexam.TestSuite
-import com.example.nexam.MainActivity
-import com.example.nexam.steps.ContactListSteps
-import com.example.nexam.steps.DetailsSteps
-import com.example.nexam.steps.ScreenshotSteps
-import com.mauriciotogneri.greencoffee.GreenCoffeeConfig
 import com.mauriciotogneri.greencoffee.GreenCoffeeTest
 import com.mauriciotogneri.greencoffee.ScenarioConfig
-import org.junit.Rule
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.Parameterized
-import java.io.IOException
 
 //@RunWith(Parameterized::class)
 class DetailsFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scenarioConfig) {
@@ -21,7 +9,7 @@ class DetailsFeatureTest(scenarioConfig: ScenarioConfig?) : GreenCoffeeTest(scen
     //TODO REMOVE IF NOT NEEDED ANYMORE
 
   /*  @Rule @JvmField
-    var activity = ActivityTestRule(MainActivity::class.java)
+    var activity = ActivityTestRule(com.example.nexam.MainActivity::class.java)
 
     @Test
     fun test() {
