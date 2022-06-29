@@ -169,7 +169,7 @@ class AddExamFragment : Fragment() {
      * Update Date in View
      */
     private fun updateDateInView() {
-        val myFormat = "dd/MM/yyyy" // mention the format you need
+        val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.GERMANY)
         textview_date?.setText(sdf.format(cal.getTime()), TextView.BufferType.SPANNABLE)
     }
